@@ -1,0 +1,6 @@
+{
+  "name": "Get Taxi Kovai",
+  "description": "Premium and reliable taxi service in Coimbatore (Kovai). Book local, outstation, one-way, and custom tours to Ooty, Munnar, and more with instant dynamic fare calculations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
