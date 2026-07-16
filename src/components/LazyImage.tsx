@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 const FALLBACK_MAP: Record<string, string> = {
   'fleet-sedan.png': 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80',
   'fleet-suv-prime.png': 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80',
+  'fleet-suv-premium.png': 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=600&q=80',
   'dest-ooty.png': 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80',
   'dest-munnar.png': 'https://images.unsplash.com/photo-1506461883276-594a12b11db3?auto=format&fit=crop&w=800&q=80',
   'dest-kodaikanal.png': 'https://images.unsplash.com/photo-1626596145552-4e4b7b4a243d?auto=format&fit=crop&w=800&q=80',
