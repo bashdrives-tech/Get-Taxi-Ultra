@@ -79,11 +79,30 @@ export default function AIAssistant() {
         throw new Error();
       }
     } catch (err) {
+      const lowerMsg = userText.toLowerCase();
+      let replyText = '';
+
+      if (lowerMsg.includes('ooty')) {
+        replyText = `**Greetings from Get Taxi Kovai!** 🌲\n\nOoty (The Queen of Hill Stations) is just 90 km away from Coimbatore, taking about 3 hours of a beautiful winding climb. Here are the top sights we highly recommend:\n\n• **Ooty Botanical Gardens** & Rose Garden\n• **Doddabetta Peak** (stunning panoramic views)\n• **Ooty Lake** (perfect for peaceful boating)\n• **Nilgiri Mountain Railway** (heritage steam toy train)\n\nOur professional drivers are experts at navigating the hill hairpins safely. To see your final all-inclusive fare for an Ooty tour, simply enter "Ooty" in our **Instant Fare Calculator**! We'll show you an exact final price with no hidden costs. You can also reach us directly at **9043743777**!`;
+      } else if (lowerMsg.includes('munnar')) {
+        replyText = `**Welcome to Get Taxi Kovai!** 🍃\n\nMunnar, the tea-scented heaven of Kerala, is located approximately 160 km from Coimbatore. It's a gorgeous 4.5-hour drive through scenic reserve forests and mountains. Sights you must experience:\n\n• **Eravikulam National Park** (home to the Nilgiri Tahr)\n• **Mattupetty Dam** & Echo Point\n• **Tata Tea Museum**\n• Beautiful cascade waterfalls along the way\n\nWe provide pristine Sedans and SUVs for this premium hill journey. For exact pricing without complex calculations, please use our **Instant Fare Calculator** on this page to get a direct customized final fare! Contact our booking desk at **9043743777** anytime.`;
+      } else if (lowerMsg.includes('kodaikanal')) {
+        replyText = `**Greetings from Get Taxi Kovai!** 🏔️\n\nKodaikanal (The Princess of Hill Stations) is a spectacular 175 km drive from Coimbatore. It takes about 4.5 hours of smooth hill climbing. Here are the must-visit highlights:\n\n• **Kodaikanal Lake** (iconic star-shaped lake for boating)\n• **Bryant Park** (beautiful landscaped gardens)\n• **Coaker's Walk** (scenic pedestrian path with cliff views)\n• **Pillar Rocks** & Silver Cascade Waterfalls\n\nTo view an exact final fare estimate with no hidden surcharges, please enter Kodaikanal in our **Instant Fare Calculator** above! For instant cab dispatch, you can call us at **9043743777**.`;
+      } else if (lowerMsg.includes('valparai')) {
+        replyText = `**Vanakkam from Get Taxi Kovai!** 🌴\n\nValparai is a pristine, offbeat hill paradise located about 110 km from Coimbatore, famous for its 40 hairpin bends and tea estates. Sights we recommend:\n\n• **Aliyar Dam** (located at the foothills)\n• **Loam's View Point** (stunning panoramic views)\n• **Sholayar Dam** (one of the highest dams in Asia)\n• **Nallamudi Viewpoint**\n\nOur experienced, hill-certified drivers ensure a safe and relaxing journey. Enter "Valparai" in our **Instant Fare Calculator** on this page to see your final, transparent quote immediately! You can also book by calling **9043743777**.`;
+      } else if (lowerMsg.includes('isha') || lowerMsg.includes('adiyogi')) {
+        replyText = `**Namaskaram from Get Taxi Kovai!** 🙏\n\nThe majestic 112-foot Adiyogi Shiva Statue at the Isha Yoga Center is located in the Velliangiri foothills, about 30 km from Coimbatore city center. It's a smooth 1-hour drive.\n\nOur cabs are available for round trips, waiting while you experience the Dhyanalinga, Linga Bhairavi Temple, and the evening light show, then dropping you back safely.\n\nUse our **Instant Fare Calculator** to get your exact final round-trip quote (choose Local Trip, around 60 km total), or call us at **9043743777** to confirm your cab instantly!`;
+      } else if (lowerMsg.includes('price') || lowerMsg.includes('fare') || lowerMsg.includes('cost') || lowerMsg.includes('rate') || lowerMsg.includes('tariff') || lowerMsg.includes('charge')) {
+        replyText = `**We guarantee 100% transparent pricing at Get Taxi Kovai!** 🚖\n\nTo save you from confusing calculations, per-km rates, or hidden night charges, we calculate a **single, all-inclusive final fare** upfront!\n\nSimply scroll to our **Instant Fare Calculator** on this page, enter your pickup/drop details, and see your absolute final quote immediately! You can then send a direct booking inquiry with a single click. For quick reservations, call us at **9043743777**!`;
+      } else {
+        replyText = `**Hello and welcome to Get Taxi Kovai!** 🚖\n\nWe are Coimbatore's premier taxi service, dedicated to safe, luxurious, and highly affordable travel across Tamil Nadu, Kerala, and Karnataka. Whether you need a quick airport pick-up, local city travel, or scenic outstation tours to **Ooty, Munnar, Kodaikanal, or Valparai**, we've got you covered!\n\nTo keep our service transparent and simple, we do not expose complex tariff sheets or per-km math. Instead, our **Instant Fare Calculator** right on this page will show you your final, all-inclusive fare immediately! \n\nHow can I help you plan your sightseeing itinerary today? Or feel free to ring us at **9043743777** for immediate bookings!`;
+      }
+
       setMessages((prev) => [
         ...prev,
         {
           role: 'model',
-          text: "I apologize, my tea gardens are currently covered in mountain mist! 🏔️\n\nPlease feel free to use our instant fare calculator on this page or call our helpdesk directly at **9043743777** for immediate assistance."
+          text: replyText
         }
       ]);
     } finally {

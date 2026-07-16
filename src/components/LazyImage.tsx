@@ -1,23 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const FALLBACK_MAP: Record<string, string> = {
-  'fleet-sedan.png': 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80',
-  'fleet-suv-prime.png': 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80',
-  'dest-ooty.png': 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80',
-  'dest-munnar.png': 'https://images.unsplash.com/photo-1506461883276-594a12b11db3?auto=format&fit=crop&w=800&q=80',
-  'dest-kodaikanal.png': 'https://images.unsplash.com/photo-1626596145552-4e4b7b4a243d?auto=format&fit=crop&w=800&q=80',
-  'dest-coorg.png': 'https://images.unsplash.com/photo-1583262648834-8c08fb180373?auto=format&fit=crop&w=800&q=80',
-  'dest-wayanad.png': 'https://images.unsplash.com/photo-1616843511100-34863bc4bc22?auto=format&fit=crop&w=800&q=80',
-  'dest-valparai.png': 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
-  'dest-coonoor.png': 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=800&q=80',
-  'dest-mysore.png': 'https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=800&q=80',
-  'dest-adiyogi.png': 'https://images.unsplash.com/photo-1609137144814-7f15b81e815a?auto=format&fit=crop&w=800&q=80',
-  'dest-madurai.png': 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
-  'blog-ooty.png': 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80',
-  'blog-munnar-kodai.png': 'https://images.unsplash.com/photo-1506461883276-594a12b11db3?auto=format&fit=crop&w=800&q=80',
-  'blog-tips.png': 'https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=800&q=80',
-  'blog-valparai.png': 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80'
-};
+const FALLBACK_MAP: Record<string, string> = {};
 
 interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src?: string;
@@ -61,22 +44,37 @@ export default function LazyImage({
     setHasError(true);
   };
 
+  const isFleet = src?.includes('fleet') || alt?.toLowerCase().includes('suv') || alt?.toLowerCase().includes('sedan') || alt?.toLowerCase().includes('ertiga') || alt?.toLowerCase().includes('innova') || alt?.toLowerCase().includes('crysta') || alt?.toLowerCase().includes('hycross');
+  const isDest = src?.includes('dest') || alt?.toLowerCase().includes('ooty') || alt?.toLowerCase().includes('munnar') || alt?.toLowerCase().includes('kodaikanal') || alt?.toLowerCase().includes('coorg') || alt?.toLowerCase().includes('wayanad') || alt?.toLowerCase().includes('valparai') || alt?.toLowerCase().includes('coonoor') || alt?.toLowerCase().includes('mysore') || alt?.toLowerCase().includes('adiyogi') || alt?.toLowerCase().includes('madurai');
+  const isBlog = src?.includes('blog') || alt?.toLowerCase().includes('blog') || alt?.toLowerCase().includes('guide') || alt?.toLowerCase().includes('tips');
+
+  const displayName = alt || src?.split('/').pop()?.replace(/\.[^/.]+$/, "").replace(/-/g, ' ') || 'Get Taxi Kovai';
+
   return (
-    <div className={`relative overflow-hidden w-full h-full bg-slate-900/10 ${containerClassName}`}>
+    <div className={`relative overflow-hidden w-full h-full bg-slate-950 ${containerClassName}`}>
       {/* Shimmering Skeleton Loader */}
       {!isLoaded && !hasError && (
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200 dark:from-slate-800 dark:via-slate-750 dark:to-slate-800 animate-pulse flex items-center justify-center">
-          {/* Subtle logo/icon inside the loading state */}
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_25%,rgba(255,255,255,0.15)_50%,transparent_75%)] bg-[length:200%_100%] animate-[shimmer_1.5s_infinite]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 animate-pulse flex items-center justify-center">
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%)] bg-[length:200%_100%] animate-[shimmer_1.5s_infinite]" />
           <span className="text-xl opacity-30 select-none">🚖</span>
         </div>
       )}
 
-      {/* Fallback state in case image fails to load */}
+      {/* Beautiful Branded Placeholder fallback when image fails to load */}
       {hasError ? (
-        <div className="absolute inset-0 bg-slate-100 dark:bg-slate-900 flex flex-col items-center justify-center text-center p-4">
-          <span className="text-2xl mb-1">📸</span>
-          <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Image Unavailable</span>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 to-slate-900 flex flex-col items-center justify-center text-center p-4 border border-white/5 select-none">
+          <div className="w-14 h-14 rounded-full bg-yellow-400/10 flex items-center justify-center text-yellow-400 text-2xl mb-3 border border-yellow-400/20 shadow-[0_0_15px_rgba(250,204,21,0.15)] animate-pulse">
+            {isFleet ? '🚖' : isDest ? '🏔️' : isBlog ? '🧭' : '🚕'}
+          </div>
+          <h5 className="text-[12px] font-black text-yellow-400 uppercase tracking-widest px-3 py-1 rounded-lg bg-yellow-400/5 border border-yellow-400/10 max-w-[90%] truncate">
+            {displayName}
+          </h5>
+          <span className="text-[9px] text-gray-400 font-bold uppercase tracking-widest mt-1.5 opacity-80">
+            {isFleet ? 'Premium Service Vehicle' : isDest ? 'Sightseeing Destination' : 'Travel Guide & Blog'}
+          </span>
+          <span className="text-[8px] text-gray-600 font-medium uppercase tracking-wider mt-1">
+            Get Taxi Kovai • Coimbatore
+          </span>
         </div>
       ) : (
         <img
