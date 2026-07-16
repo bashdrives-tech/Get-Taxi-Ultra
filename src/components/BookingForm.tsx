@@ -187,7 +187,7 @@ To resolve this:
               if (tripType === 'local') {
                 setDistanceKm(distanceInKm);
               } else {
-                const minAllowed = tripType === 'one_way' ? 130 : (days * 260);
+                const minAllowed = tripType === 'one_way' ? 130 : (days * 250);
                 setDistanceKm(Math.max(minAllowed, distanceInKm));
               }
             } else {
@@ -242,7 +242,7 @@ To resolve this:
       setDays(1);
       setDrop('');
     } else {
-      setDistanceKm(520); // 2 days * 260 = 520
+      setDistanceKm(500); // 2 days * 250 = 500
       setDays(2);
       setDrop('');
     }
@@ -258,8 +258,8 @@ To resolve this:
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         const finalDays = Math.max(1, diffDays);
         setDays(finalDays);
-        // Maintain minimum coverage for round trip: days * 260
-        setDistanceKm(prev => Math.max(finalDays * 260, prev));
+        // Maintain minimum coverage for round trip: days * 250
+        setDistanceKm(prev => Math.max(finalDays * 250, prev));
       }
     }
   }, [pickupDateTime, returnDateTime, tripType]);
@@ -272,13 +272,16 @@ To resolve this:
     }
   }, [hourlyHours, tripType]);
 
+  // Define initial load condition where distance/fare should show as exactly 0
+  const isInitialLoad = !pickup.trim() || (tripType !== 'local' && tripType !== 'hourly' && !drop.trim());
+
   // Perform the live fare calculation
   const { fare, inclusions, overageRate, tripPackage, vehicleSelected, breakdown, isEnquiryOnly } = calculateTaxiFare(
     selectedVehicle.type,
     tripType,
     (tripType === 'hourly' || tripType === 'local') ? (drop.trim() || 'Coimbatore Local') : drop,
     days,
-    distanceKm
+    isInitialLoad ? 0 : distanceKm
   );
 
   const travelDate = tripType === 'round_trip'
@@ -545,7 +548,7 @@ To resolve this:
                         </div>
                       ) : (
                         <span className="text-base font-extrabold text-slate-900">
-                          {distanceKm} KM
+                          {isInitialLoad ? 0 : distanceKm} KM
                         </span>
                       )}
                     </div>
@@ -560,11 +563,6 @@ To resolve this:
                       <Info className="w-3.5 h-3.5 shrink-0" /> Includes 10 km free per hour. Overage is calculated instantly.
                     </p>
                   )}
-                  {tripType === 'round_trip' && (
-                    <p className="text-[10px] text-gray-500 mt-1.5 leading-relaxed">
-                      * Distance reflects a complete round-trip journey (minimum 260 km coverage applies per day).
-                    </p>
-                  )}
                 </div>
               </div>
 
@@ -576,7 +574,7 @@ To resolve this:
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {VEHICLES.map((v) => {
                     const isSelected = selectedVehicle.id === v.id;
-                    const fareResult = calculateTaxiFare(v.type, tripType, drop, days, distanceKm);
+                    const fareResult = calculateTaxiFare(v.type, tripType, drop, days, isInitialLoad ? 0 : distanceKm);
                     const isEnq = fareResult.isEnquiryOnly;
                     const individualFare = fareResult.fare;
                     return (
@@ -882,7 +880,7 @@ To resolve this:
                 {tripType === 'hourly' && (
                   <div className="flex justify-between items-center">
                     <span className="font-medium text-gray-500">Duration Limit:</span>
-                    <span className="font-black text-slate-900">{days} Hours ({distanceKm} km included)</span>
+                    <span className="font-black text-slate-900">{days} Hours</span>
                   </div>
                 )}
                 <div className="flex justify-between border-t border-dashed border-gray-250 pt-3 font-black text-sm text-slate-950">

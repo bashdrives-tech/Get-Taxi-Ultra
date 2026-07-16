@@ -19,15 +19,18 @@ export default function LazyImage({
   containerClassName = '',
   ...props
 }: LazyImageProps) {
+  const isLocalMissing = src ? (!src.startsWith('http') && !src.startsWith('data:')) : true;
+
   const [currentSrc, setCurrentSrc] = useState(src);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [hasError, setHasError] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(!isLocalMissing);
+  const [hasError, setHasError] = useState(isLocalMissing);
   const [triedFallback, setTriedFallback] = useState(false);
 
   useEffect(() => {
+    const missing = src ? (!src.startsWith('http') && !src.startsWith('data:')) : true;
     setCurrentSrc(src);
-    setIsLoaded(false);
-    setHasError(false);
+    setIsLoaded(!missing);
+    setHasError(missing);
     setTriedFallback(false);
   }, [src]);
 

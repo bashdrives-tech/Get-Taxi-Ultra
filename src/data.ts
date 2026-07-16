@@ -258,6 +258,22 @@ export function calculateTaxiFare(
   let billableDistance = distance;
   let driverBeta = 0;
 
+  if (distanceKm === 0) {
+    return {
+      fare: 0,
+      inclusions: 'All-inclusive, premium travel experience with professional chauffeur service.',
+      overageRate: 'Additional usage billed at standard rates.',
+      tripPackage: 'Please enter details to calculate',
+      vehicleSelected: vehicleType === 'SUV_Prime' ? 'SUV Prime (Ertiga / Innova)' : vehicleType === 'Premium_SUV' ? 'Premium SUV (Innova Crysta / Innova Hycross)' : 'Premium Sedan',
+      breakdown: {
+        billableDistance: 0,
+        driverBeta: 0,
+        subtotal: 0,
+        estimatedTotal: 0
+      }
+    };
+  }
+
   if (vehicleType === 'SUV_Prime') {
     vehicleSelected = 'SUV Prime (Ertiga / Innova)';
     
@@ -268,29 +284,29 @@ export function calculateTaxiFare(
       const baseFare = hours * 450;
       const extraKm = Math.max(0, distance - includedKm);
       fare = baseFare + (extraKm * 35);
-      inclusions = `Includes ${hours} hours of local travel up to ${includedKm} km.`;
-      overageRate = 'Extra kilometers driven will be billed at ₹35 per km.';
+      inclusions = 'Includes hourly local travel with premium SUV and chauffeur service.';
+      overageRate = 'Standard extra usage rates apply after rental limit.';
     } else if (tripType === 'local') {
       tripPackage = 'Local Day Trip within Coimbatore';
       fare = 120 + (distance * 35);
-      inclusions = `Includes local SUV Prime travel. Base fare is ₹120.`;
-      overageRate = 'Kilometers driven billed at ₹35 per km.';
+      inclusions = 'Includes local SUV Prime travel with professional driver service.';
+      overageRate = 'Standard local rates apply for any extra travel.';
     } else if (tripType === 'one_way') {
       tripPackage = `One-Way SUV Prime Drop to ${destination || 'Destination'}`;
       billableDistance = Math.max(130, distance);
       driverBeta = 550;
       fare = (billableDistance * 20) + driverBeta;
-      inclusions = `Includes SUV Prime one-way drop with 130 km minimum coverage and Driver Beta.`;
-      overageRate = 'Extra kilometers driven will be billed at ₹20 per km.';
+      inclusions = 'Includes SUV Prime one-way drop with driver allowance and fuel charges.';
+      overageRate = 'Standard outstation overage rates apply.';
     } else {
       const daysStr = days === 1 ? '1 Day' : `${days} Days`;
       tripPackage = `${daysStr} SUV Prime Tour to ${destination || 'Destination'}`;
-      const minDistance = days * 260;
+      const minDistance = days * 250;
       billableDistance = Math.max(minDistance, distance);
       driverBeta = days * 550;
       fare = (billableDistance * 18) + driverBeta;
-      inclusions = `Includes ${daysStr} round-trip travel up to ${billableDistance} km and Driver Bata.`;
-      overageRate = 'Extra kilometers driven will be billed at ₹18 per km.';
+      inclusions = 'Includes round-trip travel, state permit taxes, and driver allowance.';
+      overageRate = 'Standard outstation tour rates apply for extra distance.';
     }
   } else if (vehicleType === 'Premium_SUV') {
     vehicleSelected = 'Premium SUV (Innova Crysta / Innova Hycross)';
@@ -299,29 +315,29 @@ export function calculateTaxiFare(
       const hours = Math.max(1, Math.min(12, daysNeeded));
       tripPackage = `${hours} Hours Premium SUV Rental`;
       fare = 0;
-      inclusions = `Innova Crysta & Hycross hourly rentals require custom itineraries.`;
+      inclusions = 'Innova Crysta & Hycross hourly rentals require custom itineraries.';
       overageRate = 'Direct WhatsApp or Phone Enquiry Required.';
     } else if (tripType === 'local') {
       tripPackage = 'Local Day Trip within Coimbatore';
       fare = 150 + (distance * 40);
-      inclusions = `Includes local luxury SUV travel. Base fare is ₹150.`;
-      overageRate = 'Kilometers driven billed at ₹40 per km.';
+      inclusions = 'Includes local luxury SUV travel with professional chauffeur service.';
+      overageRate = 'Standard local luxury rates apply for extra usage.';
     } else if (tripType === 'one_way') {
       tripPackage = `One-Way Premium SUV Drop to ${destination || 'Destination'}`;
       billableDistance = Math.max(130, distance);
       driverBeta = 600;
       fare = (billableDistance * 24) + driverBeta;
-      inclusions = `Includes premium SUV one-way drop with 130 km minimum coverage and Driver Beta.`;
-      overageRate = 'Extra kilometers driven will be billed at ₹24 per km.';
+      inclusions = 'Includes premium SUV one-way drop with driver allowance and fuel charges.';
+      overageRate = 'Standard premium overage rates apply.';
     } else {
       const daysStr = days === 1 ? '1 Day' : `${days} Days`;
       tripPackage = `${daysStr} Premium SUV Tour to ${destination || 'Destination'}`;
-      const minDistance = days * 260;
+      const minDistance = days * 250;
       billableDistance = Math.max(minDistance, distance);
       driverBeta = days * 600;
       fare = (billableDistance * 22) + driverBeta;
-      inclusions = `Includes ${daysStr} round-trip travel up to ${billableDistance} km and Driver Bata.`;
-      overageRate = 'Extra kilometers driven will be billed at ₹22 per km.';
+      inclusions = 'Includes luxury round-trip travel, state permits, and driver allowance.';
+      overageRate = 'Standard premium tour rates apply for extra distance.';
     }
   } else {
     // Default to Sedan (Premium Sedan)
@@ -334,29 +350,29 @@ export function calculateTaxiFare(
       const baseFare = hours * 350;
       const extraKm = Math.max(0, distance - includedKm);
       fare = baseFare + (extraKm * 30);
-      inclusions = `Includes ${hours} hours of local travel up to ${includedKm} km.`;
-      overageRate = 'Extra kilometers driven will be billed at ₹30 per km.';
+      inclusions = 'Includes hourly local travel with premium sedan and professional chauffeur.';
+      overageRate = 'Standard extra usage rates apply after rental limit.';
     } else if (tripType === 'local') {
       tripPackage = 'Local Day Trip within Coimbatore';
       fare = 80 + (distance * 30);
-      inclusions = `Includes local sedan travel. Base fare is ₹80.`;
-      overageRate = 'Kilometers driven billed at ₹30 per km.';
+      inclusions = 'Includes local sedan travel and professional driver service.';
+      overageRate = 'Standard local rates apply for extra travel.';
     } else if (tripType === 'one_way') {
       tripPackage = `One-Way Drop to ${destination || 'Destination'}`;
       billableDistance = Math.max(130, distance);
       driverBeta = 500;
       fare = (billableDistance * 15) + driverBeta;
-      inclusions = `Includes one-way drop with 130 km minimum coverage and Driver Beta.`;
-      overageRate = 'Extra kilometers driven will be billed at ₹15 per km.';
+      inclusions = 'Includes premium sedan one-way drop, driver allowance, and fuel charges.';
+      overageRate = 'Standard outstation overage rates apply.';
     } else {
       const daysStr = days === 1 ? '1 Day' : `${days} Days`;
       tripPackage = `${daysStr} Tour to ${destination || 'Destination'}`;
-      const minDistance = days * 260;
+      const minDistance = days * 250;
       billableDistance = Math.max(minDistance, distance);
       driverBeta = days * 500;
-      fare = (billableDistance * 14) + driverBeta;
-      inclusions = `Includes ${daysStr} round-trip travel up to ${billableDistance} km and Driver Bata.`;
-      overageRate = 'Extra kilometers driven will be billed at ₹14 per km.';
+      fare = (billableDistance * 15) + driverBeta;
+      inclusions = 'Includes comfortable round-trip travel, state permits, and driver allowance.';
+      overageRate = 'Standard outstation tour rates apply for extra distance.';
     }
   }
 
