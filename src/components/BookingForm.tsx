@@ -12,10 +12,8 @@ interface BookingFormProps {
   onSuccess?: (inquiry: Inquiry) => void;
 }
 
-const API_KEY = 
-  process.env.GOOGLE_MAPS_PLATFORM_KEY || 
-  (import.meta as any).env?.VITE_GOOGLE_MAPS_PLATFORM_KEY || 
-  '';
+// Read Google Maps API key from environment configuration and trim whitespace to prevent invalid key errors
+const API_KEY = (process.env.GOOGLE_MAPS_PLATFORM_KEY || '').trim();
 
 export default function BookingForm({ initialDestinationId, onSuccess }: BookingFormProps) {
   // Input Refs for Google Autocomplete
@@ -25,7 +23,7 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
   // Trip details state
   const [tripType, setTripType] = useState<TripType>('local');
   const [pickup, setPickup] = useState('');
-  const [drop, setDrop] = useState('Coimbatore Local');
+  const [drop, setDrop] = useState('');
   const [distanceKm, setDistanceKm] = useState<number>(40); 
   const [days, setDays] = useState<number>(1);
   const [selectedVehicle, setSelectedVehicle] = useState<VehicleOption>(VEHICLES[0]); // Default to Sedan
@@ -34,6 +32,7 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
   const [isMapsLoaded, setIsMapsLoaded] = useState(false);
   const [isCalculatingDistance, setIsCalculatingDistance] = useState(false);
   const [calculationError, setCalculationError] = useState('');
+  const [mapsError, setMapsError] = useState('');
 
   // Contact details state
   const [name, setName] = useState('');
@@ -55,6 +54,21 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
   // 1. Load Google Maps Platform JavaScript API dynamically
   useEffect(() => {
     if (typeof window === 'undefined') return;
+
+    // Capture authentication/key failures gracefully
+    (window as any).gm_authFailure = () => {
+      const currentUrl = typeof window !== 'undefined' ? window.location.origin : '';
+      setMapsError(`Google Maps API key authorization failed (RefererNotAllowedMapError). Google requires you to authorize this specific URL in your Google Cloud Console Key Restrictions:
+
+👉 ${currentUrl}/*
+
+To resolve this:
+1. Go to your Google Cloud Console (APIs & Services > Credentials).
+2. Click on your Google Maps API Key.
+3. Under "Website restrictions", add the authorized website URL pattern above.
+4. Click Save, and allow up to 5 minutes for Google's servers to update.`);
+    };
+
     if ((window as any).google?.maps?.places) {
       setIsMapsLoaded(true);
       return;
@@ -69,14 +83,16 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
 
     const script = document.createElement('script');
     script.id = scriptId;
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY || 'YOUR_API_KEY'}&libraries=places`;
+    script.src = API_KEY 
+      ? `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`
+      : `https://maps.googleapis.com/maps/api/js?libraries=places`;
     script.async = true;
     script.defer = true;
     script.onload = () => setIsMapsLoaded(true);
     document.head.appendChild(script);
   }, []);
 
-  // 2. Initialize Google Autocomplete on input fields
+  // 2. Initialize Google Autocomplete on input fields (Run EXACTLY ONCE upon load to prevent double-binding and listener conflicts)
   useEffect(() => {
     if (!isMapsLoaded || !(window as any).google) return;
 
@@ -86,27 +102,29 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
     if (pickupInputRef.current) {
       pickupAutocomplete = new (window as any).google.maps.places.Autocomplete(pickupInputRef.current, {
         componentRestrictions: { country: 'in' },
-        fields: ['formatted_address', 'geometry']
+        fields: ['formatted_address', 'geometry', 'name']
       });
 
       pickupAutocomplete.addListener('place_changed', () => {
         const place = pickupAutocomplete?.getPlace();
-        if (place?.formatted_address) {
-          setPickup(place.formatted_address);
+        const address = place?.formatted_address || place?.name;
+        if (address) {
+          setPickup(address);
         }
       });
     }
 
-    if (dropInputRef.current && tripType !== 'hourly' && tripType !== 'local') {
+    if (dropInputRef.current) {
       dropAutocomplete = new (window as any).google.maps.places.Autocomplete(dropInputRef.current, {
         componentRestrictions: { country: 'in' },
-        fields: ['formatted_address', 'geometry']
+        fields: ['formatted_address', 'geometry', 'name']
       });
 
       dropAutocomplete.addListener('place_changed', () => {
         const place = dropAutocomplete?.getPlace();
-        if (place?.formatted_address) {
-          setDrop(place.formatted_address);
+        const address = place?.formatted_address || place?.name;
+        if (address) {
+          setDrop(address);
         }
       });
     }
@@ -117,65 +135,81 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
         if (dropAutocomplete) (window as any).google.maps.event.clearInstanceListeners(dropAutocomplete);
       }
     };
-  }, [isMapsLoaded, tripType]);
+  }, [isMapsLoaded]);
 
   // 3. Dynamic Google Maps Distance Matrix API calculation
   useEffect(() => {
     if (!isMapsLoaded || !(window as any).google || !pickup.trim()) return;
 
-    // For local and hourly trips, we use predefined standard/hourly values
-    if (tripType === 'hourly' || tripType === 'local') {
+    // For hourly trips, we use predefined hourly values based on duration
+    if (tripType === 'hourly') {
+      setDistanceKm(hourlyHours * 10);
       return;
     }
 
-    // Ensure we have a valid destination selected
-    if (!drop.trim() || drop === 'Coimbatore Local Only') {
+    // For local trips, if no specific destination is selected, fall back to standard package (40 km)
+    if (tripType === 'local' && (!drop.trim() || drop === 'Coimbatore Local Only' || drop === 'Coimbatore Local')) {
+      setDistanceKm(40);
+      return;
+    }
+
+    // Ensure we have a valid destination selected for outstation
+    if (!drop.trim() || drop === 'Coimbatore Local Only' || drop === 'Coimbatore Local') {
       return;
     }
 
     setIsCalculatingDistance(true);
     setCalculationError('');
 
-    const service = new (window as any).google.maps.DistanceMatrixService();
-    service.getDistanceMatrix(
-      {
-        origins: [pickup],
-        destinations: [drop],
-        travelMode: (window as any).google.maps.TravelMode.DRIVING,
-        unitSystem: (window as any).google.maps.UnitSystem.METRIC,
-      },
-      (response: any, status: any) => {
-        setIsCalculatingDistance(false);
-        if (status === 'OK' && response && response.rows[0]?.elements[0]) {
-          const element = response.rows[0].elements[0];
-          if (element.status === 'OK' && element.distance) {
-            const distanceInMeters = element.distance.value;
-            let distanceInKm = Math.ceil(distanceInMeters / 1000);
-            
-            // For outstation round trips, double the distance to account for back-and-forth travel
-            if (tripType === 'round_trip') {
-              distanceInKm = distanceInKm * 2;
+    try {
+      const service = new (window as any).google.maps.DistanceMatrixService();
+      service.getDistanceMatrix(
+        {
+          origins: [pickup],
+          destinations: [drop],
+          travelMode: (window as any).google.maps.TravelMode.DRIVING,
+          unitSystem: (window as any).google.maps.UnitSystem.METRIC,
+        },
+        (response: any, status: any) => {
+          setIsCalculatingDistance(false);
+          if (status === 'OK' && response && response.rows[0]?.elements[0]) {
+            const element = response.rows[0].elements[0];
+            if (element.status === 'OK' && element.distance) {
+              const distanceInMeters = element.distance.value;
+              let distanceInKm = Math.ceil(distanceInMeters / 1000);
+              
+              // For outstation round trips, double the distance to account for back-and-forth travel
+              if (tripType === 'round_trip') {
+                distanceInKm = distanceInKm * 2;
+              }
+              
+              // Respect minimum outstation guarantees
+              if (tripType === 'local') {
+                setDistanceKm(distanceInKm);
+              } else {
+                const minAllowed = tripType === 'one_way' ? 130 : (days * 260);
+                setDistanceKm(Math.max(minAllowed, distanceInKm));
+              }
+            } else {
+              setCalculationError('Google Maps driving route unavailable. Using estimated distance.');
+              // Fallback matching logic
+              const matchingDest = DESTINATIONS.find(d => 
+                drop.toLowerCase().includes(d.id.toLowerCase()) || 
+                drop.toLowerCase().includes(d.title.toLowerCase())
+              );
+              if (matchingDest) {
+                setDistanceKm(tripType === 'round_trip' ? matchingDest.distanceKm : Math.round(matchingDest.distanceKm / 2));
+              }
             }
-            
-            // Respect minimum outstation guarantees
-            const minAllowed = tripType === 'one_way' ? 130 : (days * 260);
-            setDistanceKm(Math.max(minAllowed, distanceInKm));
           } else {
-            setCalculationError('Google Maps driving route unavailable. Using estimated distance.');
-            // Fallback matching logic
-            const matchingDest = DESTINATIONS.find(d => 
-              drop.toLowerCase().includes(d.id.toLowerCase()) || 
-              drop.toLowerCase().includes(d.title.toLowerCase())
-            );
-            if (matchingDest) {
-              setDistanceKm(tripType === 'round_trip' ? matchingDest.distanceKm : Math.round(matchingDest.distanceKm / 2));
-            }
+            setCalculationError('Unable to connect to Google Maps API. Using estimated fallback.');
           }
-        } else {
-          setCalculationError('Unable to connect to Google Maps API. Using estimated fallback.');
         }
-      }
-    );
+      );
+    } catch (err) {
+      setIsCalculatingDistance(false);
+      setCalculationError('Google Maps Distance Matrix service is temporarily unavailable. Using estimated fallback.');
+    }
   }, [pickup, drop, tripType, days, isMapsLoaded]);
 
   // Auto-fill details if an initial destination is selected
@@ -198,11 +232,11 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
     if (type === 'hourly') {
       setDistanceKm(hourlyHours * 10);
       setDays(hourlyHours);
-      setDrop('Coimbatore Local');
+      setDrop('');
     } else if (type === 'local') {
       setDistanceKm(40);
       setDays(1);
-      setDrop('Coimbatore Local');
+      setDrop('');
     } else if (type === 'one_way') {
       setDistanceKm(130);
       setDays(1);
@@ -242,7 +276,7 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
   const { fare, inclusions, overageRate, tripPackage, vehicleSelected, breakdown, isEnquiryOnly } = calculateTaxiFare(
     selectedVehicle.type,
     tripType,
-    tripType === 'hourly' ? 'Coimbatore Local' : drop,
+    (tripType === 'hourly' || tripType === 'local') ? (drop.trim() || 'Coimbatore Local') : drop,
     days,
     distanceKm
   );
@@ -273,7 +307,7 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
     setError('');
     setIsSubmitting(true);
 
-    const finalDrop = (tripType === 'local' || tripType === 'hourly') ? 'Coimbatore Local Only' : drop;
+    const finalDrop = (tripType === 'local' || tripType === 'hourly') ? (drop.trim() || 'Coimbatore Local') : drop;
 
     try {
       const response = await fetch('/api/inquiries', {
@@ -375,6 +409,16 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
                 ))}
               </div>
 
+              {mapsError && (
+                <div className="bg-amber-50 border border-amber-200 text-amber-800 text-xs p-4 rounded-2xl flex items-start gap-2.5 shadow-sm">
+                  <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-extrabold block mb-0.5">Google Maps Key Authorization Error</span>
+                    <p className="text-amber-700 leading-relaxed whitespace-pre-line">{mapsError}</p>
+                  </div>
+                </div>
+              )}
+
               {/* Journey Details */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4" id="seo-journey-details">
                 <div>
@@ -403,12 +447,11 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
                     name="drop_location"
                     type="text"
                     required={tripType !== 'local' && tripType !== 'hourly'}
-                    disabled={tripType === 'hourly' || tripType === 'local'}
                     ref={dropInputRef}
-                    placeholder={tripType === 'hourly' || tripType === 'local' ? "Within Coimbatore Only" : "e.g. Ooty, Munnar, RS Puram"}
-                    value={tripType === 'hourly' || tripType === 'local' ? "Coimbatore Local Only" : drop}
+                    placeholder={tripType === 'hourly' || tripType === 'local' ? "e.g. Coimbatore Airport, RS Puram (Optional)" : "e.g. Ooty, Munnar, RS Puram"}
+                    value={drop}
                     onChange={(e) => setDrop(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow outline-none transition text-sm text-gray-800 disabled:bg-gray-100 disabled:text-gray-500 font-medium"
+                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow outline-none transition text-sm text-gray-800 font-medium"
                   />
                 </div>
               </div>
@@ -490,7 +533,7 @@ export default function BookingForm({ initialDestinationId, onSuccess }: Booking
                       <div>
                         <span className="block text-[10px] text-gray-400 uppercase font-bold">Total Distance</span>
                         <span className="text-xs text-slate-700 font-bold">
-                          {tripType === 'local' ? 'Local Coimbatore' : tripType === 'hourly' ? 'Hourly Local Rental' : 'Calculated via Google Maps'}
+                          {tripType === 'local' && (!drop.trim() || drop === 'Coimbatore Local' || drop === 'Coimbatore Local Only') ? 'Local Coimbatore (Default Package)' : tripType === 'hourly' ? 'Hourly Local Rental' : 'Calculated via Google Maps'}
                         </span>
                       </div>
                     </div>

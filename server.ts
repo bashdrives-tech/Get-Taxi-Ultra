@@ -7,12 +7,16 @@ import { DESTINATIONS, BLOGS } from './src/data';
 
 dotenv.config();
 
-// Create the shared Gemini client utility on the server
-let ai: GoogleGenAI | null = null;
-try {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (apiKey && apiKey !== 'MY_GEMINI_API_KEY') {
-    ai = new GoogleGenAI({
+// Create the shared Gemini client utility on the server with lazy initialization
+let aiClient: GoogleGenAI | null = null;
+
+function getGeminiClient(): GoogleGenAI {
+  if (!aiClient) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey || apiKey === 'MY_GEMINI_API_KEY') {
+      throw new Error('GEMINI_API_KEY environment variable is not set or is a placeholder.');
+    }
+    aiClient = new GoogleGenAI({
       apiKey: apiKey,
       httpOptions: {
         headers: {
@@ -20,11 +24,8 @@ try {
         },
       },
     });
-  } else {
-    console.warn('GEMINI_API_KEY is not defined or is placeholder. AI Assistant features will use friendly offline fallbacks.');
   }
-} catch (err) {
-  console.error('Failed to initialize GoogleGenAI client:', err);
+  return aiClient;
 }
 
 const app = express();
@@ -195,8 +196,9 @@ Tone:
 - Make travel suggestions attractive and describe must-visit spots in Ooty (Botanical Gardens, Dodabetta, Tea Factories), Munnar (Tea Estates, Eravikulam, dams), etc. with passion.
 - Keep responses relatively concise and easy to read (max 2-3 short paragraphs). Use bullet points for sightseeing attractions.`;
 
-    if (ai) {
-      // Use GoogleGenAI standard generateContent call
+    try {
+      const client = getGeminiClient();
+      
       // Formulate custom chat prompts with history to maintain context
       const formattedHistory = (history || []).map((msg: any) => {
         return `${msg.role === 'user' ? 'Customer' : 'Assistant'}: ${msg.text}`;
@@ -204,7 +206,7 @@ Tone:
 
       const fullPrompt = `${formattedHistory}\nCustomer: ${message}\nAssistant:`;
 
-      const response = await ai.models.generateContent({
+      const response = await client.models.generateContent({
         model: 'gemini-3.5-flash',
         contents: fullPrompt,
         config: {
@@ -215,8 +217,10 @@ Tone:
 
       const replyText = response.text || 'I am delighted to help you plan your journey from Coimbatore with Get Taxi Kovai! Please use our booking calculator to get your direct quote, or call us directly at 9043743777.';
       return res.json({ text: replyText });
-    } else {
-      // Friendly simulated AI assistant if API Key is not yet configured in UI secrets
+    } catch (apiError: any) {
+      console.warn('Gemini API call failed, falling back to simulated chat response:', apiError.message || apiError);
+      
+      // Friendly simulated AI assistant if API Key is not yet configured or is restricted
       const lowerMsg = message.toLowerCase();
       let replyText = '';
 

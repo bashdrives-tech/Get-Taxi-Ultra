@@ -23,7 +23,7 @@ export default function LocalGeoHubs() {
       "description": "Premium outstation taxi & cab service in Coimbatore. Safe, certified drivers with 5+ years mountain ghat road experience for Ooty, Munnar, Valparai, Kodaikanal & Mysore.",
       "telephone": "+919043743777",
       "url": window.location.origin,
-      "logo": "https://images.unsplash.com/photo-1598324789736-4861f89564a0?auto=format&fit=crop&w=150&q=80",
+      "logo": window.location.origin + "/logo.png",
       "priceRange": "₹₹",
       "provider": {
         "@type": "LocalBusiness",

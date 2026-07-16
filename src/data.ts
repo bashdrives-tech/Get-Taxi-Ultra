@@ -200,7 +200,7 @@ export const DESTINATIONS: Destination[] = [
     ],
     bestTimeToVisit: 'Year-round (Best in evening for Light Show)',
     bgColor: 'from-violet-50 to-fuchsia-50 border-violet-100',
-    bannerImage: 'https://images.unsplash.com/photo-1618083707368-b3823daa2726?auto=format&fit=crop&w=1200&q=80'
+    bannerImage: 'dest-adiyogi.png'
   },
   {
     id: 'madurai',
@@ -219,7 +219,7 @@ export const DESTINATIONS: Destination[] = [
     ],
     bestTimeToVisit: 'October to March',
     bgColor: 'from-orange-50 to-amber-50 border-orange-100',
-    bannerImage: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80'
+    bannerImage: 'dest-madurai.png'
   }
 ];
 

@@ -505,7 +505,7 @@ export default function App() {
         {/* PREMIUM DARK HERO SECTION */}
         <section className="relative text-white pt-28 pb-60 px-4 md:px-8 text-center overflow-hidden border-b border-white/5 bg-slate-950">
           {/* High-quality cinematic background image with heavy dark gradient overlay */}
-          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1920&q=80')" }}></div>
+          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity" style={{ backgroundImage: "url('/hero-bg.jpg')" }}></div>
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-900/80 to-slate-950"></div>
           
           {/* Ambient blurred backdrop glows */}
