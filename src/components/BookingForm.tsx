@@ -596,7 +596,7 @@ To resolve this:
                             <div className="w-16 h-10 rounded-lg bg-brand-yellow/10 border border-brand-yellow/20 flex flex-col items-center justify-center p-0.5 text-center leading-none">
                               <span className="text-lg">🚖</span>
                               <span className="text-[7px] font-bold text-brand-yellow mt-0.5 uppercase tracking-wide">
-                                {v.id === 'Premium_SUV' ? 'Premium' : v.id === 'SUV_Prime' ? 'Prime' : 'Sedan'}
+                                {v.id === 'premium_suv' || v.type === 'Premium_SUV' ? 'Premium' : v.id === 'suv_prime' || v.type === 'SUV_Prime' ? 'Prime' : 'Sedan'}
                               </span>
                             </div>
                             <span className="text-[9px] uppercase tracking-wider bg-brand-yellow/20 font-extrabold px-1.5 py-0.5 rounded text-slate-800">
