@@ -15,16 +15,38 @@ export default function InquiryList({ onClose }: InquiryListProps) {
   const fetchInquiries = async () => {
     setLoading(true);
     setError('');
+    
+    // Read from localStorage first for offline/static deployment support
+    let locals: Inquiry[] = [];
+    try {
+      locals = JSON.parse(localStorage.getItem('local_inquiries') || '[]');
+    } catch (e) {
+      console.error(e);
+    }
+
     try {
       const res = await fetch('/api/inquiries');
-      if (res.ok) {
+      const contentType = res.headers.get('content-type');
+      if (res.ok && contentType && contentType.includes('application/json')) {
         const data = await res.json();
-        setInquiries(data.inquiries || []);
+        const serverInquiries = data.inquiries || [];
+        const merged = [...serverInquiries];
+        
+        // Merge offline/local inquiries without duplicating
+        locals.forEach((local) => {
+          if (!merged.some(m => m.id === local.id)) {
+            merged.unshift(local); // Put latest local bookings first
+          }
+        });
+        
+        setInquiries(merged);
       } else {
-        setError('Failed to fetch inquiries from server');
+        setInquiries(locals);
+        setError('Connected to local storage (showing offline submissions)');
       }
     } catch (err) {
-      setError('Network error. Is the server running?');
+      setInquiries(locals);
+      setError('Connected to local storage (showing offline submissions)');
     } finally {
       setLoading(false);
     }

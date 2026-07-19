@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Taxi Kovai | Coimbatore Taxi & Ooty Tour Package Premium Cabs</title>
+  <meta name="description" content="Book premium cabs with Get Taxi Kovai. Best Coimbatore Taxi service for Ooty Tour Package, Munnar Sightseeing, and hourly rentals. Real-time transparent fares, trusted drivers." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Configure Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#fefce8',
+              100: '#fef9c3',
+              200: '#fef08a',
+              300: '#fde047',
+              400: '#facc15', // Main yellow
+              500: '#eab308',
+              600: '#ca8a04',
+              700: '#a16207',
+            },
+            dark: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#0b1329', // Deep dark theme blue
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Styles -->
+  <style>
+    body {
+      background-color: #0b1329;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    #splash-screen {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #0b1329;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    }
+    
+    #splash-screen.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .splash-text {
+      font-size: 2.75rem;
+      font-weight: 900;
+      color: #facc15;
+      font-family: 'Space Grotesk', sans-serif;
+      text-align: center;
+      letter-spacing: -0.025em;
+      text-shadow: 0 4px 24px rgba(250, 204, 21, 0.25);
+      animation: subtle-zoom 2.5s ease-out forwards;
+    }
+    
+    @keyframes subtle-zoom {
+      0% { transform: scale(0.92); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: scale(1.08); opacity: 1; }
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b1329;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-brand-400 selection:text-dark-950">
+
+  <!-- Splash Screen -->
+  <div id="splash-screen">
+    <div class="splash-text">வணக்கம் கோவை</div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-40 bg-dark-950/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="bg-brand-400 text-dark-950 p-2.5 rounded-xl font-display font-black text-xl shadow-lg shadow-brand-400/20 tracking-tight">
+          GTK
+        </div>
+        <div>
+          <h1 class="font-display font-bold text-lg text-white leading-none">Get Taxi Kovai</h1>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-brand-400">Coimbatore Premium Cabs</span>
+        </div>
+      </div>
+      
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#booking" class="hover:text-brand-400 transition-colors">Book Taxi</a>
+        <a href="#destinations" class="hover:text-brand-400 transition-colors">Destinations</a>
+        <a href="#fleet" class="hover:text-brand-400 transition-colors">Our Fleet</a>
+        <a href="#about" class="hover:text-brand-400 transition-colors">Why Choose Us</a>
+        <a href="#faq" class="hover:text-brand-400 transition-colors">FAQs</a>
+      </nav>
+
+      <!-- CTA Call / WhatsApp -->
+      <div class="flex items-center gap-3">
+        <a href="tel:+919043743777" class="hidden sm:flex items-center gap-2 text-sm font-semibold bg-slate-900 border border-slate-700 hover:border-brand-400 text-white px-4 py-2 rounded-xl transition-all duration-300">
+          <i data-lucide="phone-call" class="w-4 h-4 text-brand-400"></i>
+          <span>90437 43777</span>
+        </a>
+        <a href="#booking" class="bg-brand-400 hover:bg-brand-500 text-dark-950 font-bold px-5 py-2.5 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-brand-400/10 hover:shadow-brand-400/20 hover:-translate-y-0.5">
+          Estimate Fare
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[80vh] flex items-center py-20 overflow-hidden bg-gradient-to-b from-dark-950 via-[#0e1933] to-dark-950">
+    <div class="absolute inset-0 z-0 opacity-15">
+      <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Hero Left Text -->
+      <div class="lg:col-span-7 space-y-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-400/10 border border-brand-400/20 text-brand-400 text-xs font-mono font-bold uppercase tracking-wider">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+          Coimbatore's #1 Premium Taxi Fleet
+        </div>
+        
+        <h2 class="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
+          Comfortable Rides. <br class="hidden sm:inline"/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-yellow-300 to-amber-400">Transparent Pricing.</span>
+        </h2>
+        
+        <p class="text-slate-300 text-lg max-w-xl leading-relaxed">
+          Premium outstation cabs and tour packages from Coimbatore to Ooty, Munnar, Kodaikanal, Wayanad, and Adiyogi. Professional chauffeurs, zero hidden costs, and ultimate legroom.
+        </p>
+        
+        <!-- Trust / Badges -->
+        <div class="grid grid-cols-3 gap-6 pt-4 max-w-lg border-t border-slate-800/80">
+          <div>
+            <div class="font-display font-black text-2xl text-white">4.9/5</div>
+            <div class="text-xs text-slate-400 font-medium">Customer Rating</div>
+          </div>
+          <div>
+            <div class="font-display font-black text-2xl text-white">100%</div>
+            <div class="text-xs text-slate-400 font-medium">Safe Hill Drivers</div>
+          </div>
+          <div>
+            <div class="font-display font-black text-2xl text-white">₹0</div>
+            <div class="text-xs text-slate-400 font-medium">Cancellation Fee</div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="#booking" class="bg-brand-400 hover:bg-brand-500 text-dark-950 font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-brand-400/20 hover:shadow-brand-400/30 transition-all duration-300 flex items-center gap-2">
+            <span>Book Cab Now</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </a>
+          <a href="#destinations" class="bg-slate-900 border border-slate-800 hover:border-slate-700 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center gap-2">
+            <span>Explore Packages</span>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Hero Right Floating App Image / Visual -->
+      <div class="lg:col-span-5 relative hidden lg:block">
+        <div class="absolute -inset-4 bg-brand-400/10 rounded-[32px] blur-2xl opacity-50"></div>
+        <div class="relative bg-slate-900/80 border border-slate-850 p-6 rounded-3xl shadow-2xl backdrop-blur-md">
+          <div class="flex justify-between items-center pb-4 mb-6 border-b border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-red-500"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+              <span class="w-3 h-3 rounded-full bg-green-500"></span>
+            </div>
+            <span class="text-xs font-mono text-slate-400">Live Fare Terminal</span>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+              <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-1">Recommended Option</div>
+              <div class="flex justify-between items-center">
+                <span class="font-semibold text-white">Premium Sedan</span>
+                <span class="font-mono text-brand-400 font-bold">₹15 / KM</span>
+              </div>
+            </div>
+            
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+              <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-1">Standard SUV (Family)</div>
+              <div class="flex justify-between items-center">
+                <span class="font-semibold text-white">SUV Prime (Ertiga)</span>
+                <span class="font-mono text-brand-400 font-bold">₹18 / KM</span>
+              </div>
+            </div>
+            
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+              <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-1">Luxury / Comfort</div>
+              <div class="flex justify-between items-center">
+                <span class="font-semibold text-white">Innova Crysta Premium</span>
+                <span class="font-mono text-brand-400 font-bold">₹22 / KM</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-6 flex items-center justify-between text-xs text-slate-400 font-medium">
+            <span>✓ Verified Chauffeurs</span>
+            <span>✓ All-Inclusive Estimates</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Calculator & Booking Form Section -->
+  <section id="booking" class="py-24 bg-slate-900 border-y border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <h2 class="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
+          Instant Fare Estimator & Cab Booking
+        </h2>
+        <p class="text-slate-300">
+          Calculate your exact, transparent outstation trip costs in real-time. No hidden surcharges, no surprise driver allowance demands.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Booking Left: The Input Form -->
+        <div class="lg:col-span-7 bg-dark-950 border border-slate-800/85 rounded-2xl p-6 sm:p-8 space-y-6">
+          <h3 class="font-display font-bold text-lg text-white border-b border-slate-800 pb-4 flex items-center gap-2">
+            <i data-lucide="calculator" class="text-brand-400 w-5 h-5"></i>
+            Enter Trip Requirements
+          </h3>
+          
+          <!-- Trip Type Tabs -->
+          <div>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Trip Type</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-slate-900 p-1.5 rounded-xl border border-slate-800">
+              <button onclick="setTripType('one_way')" id="btn-one_way" class="trip-tab-btn py-2 text-xs font-semibold rounded-lg transition-all bg-brand-400 text-dark-950">One Way Drop</button>
+              <button onclick="setTripType('round_trip')" id="btn-round_trip" class="trip-tab-btn py-2 text-xs font-semibold rounded-lg text-slate-300 transition-all hover:text-white">Round Trip</button>
+              <button onclick="setTripType('local')" id="btn-local" class="trip-tab-btn py-2 text-xs font-semibold rounded-lg text-slate-300 transition-all hover:text-white">Coimbatore Local</button>
+              <button onclick="setTripType('hourly')" id="btn-hourly" class="trip-tab-btn py-2 text-xs font-semibold rounded-lg text-slate-300 transition-all hover:text-white">Hourly Rental</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Pickup Location -->
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5">Pickup Address in Coimbatore</label>
+              <div class="relative">
+                <i data-lucide="map-pin" class="absolute left-3.5 top-3.5 text-slate-400 w-5 h-5"></i>
+                <input type="text" id="pickup-input" oninput="calculateLiveFare()" placeholder="e.g. Coimbatore Airport, Railway Station, Gandhipuram" class="w-full bg-slate-900 border border-slate-800 focus:border-brand-400 text-white pl-11 pr-4 py-3 rounded-xl outline-none transition-colors" value="Coimbatore Airport (CJB)" />
+              </div>
+            </div>
+
+            <!-- Dropoff Location -->
+            <div id="drop-container">
+              <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5">Drop-off Destination</label>
+              <div class="relative">
+                <i data-lucide="navigation" class="absolute left-3.5 top-3.5 text-slate-400 w-5 h-5"></i>
+                <input type="text" id="drop-input" oninput="calculateLiveFare()" placeholder="e.g. Ooty, Munnar, Bangalore" class="w-full bg-slate-900 border border-slate-800 focus:border-brand-400 text-white pl-11 pr-4 py-3 rounded-xl outline-none transition-colors" value="Ooty Hill Station" />
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Departure Date & Time -->
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5">Pickup Date & Time</label>
+              <div class="relative">
+                <i data-lucide="calendar" class="absolute left-3.5 top-3.5 text-slate-400 w-5 h-5"></i>
+                <input type="datetime-local" id="pickup-date" class="w-full bg-slate-900 border border-slate-800 focus:border-brand-400 text-white pl-11 pr-4 py-3 rounded-xl outline-none transition-colors" />
+              </div>
+            </div>
+
+            <!-- Return Date for Round Trips / Hours for Hourly / Days needed -->
+            <div id="duration-container">
+              <label id="duration-label" class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5">Days Needed</label>
+              <div class="relative">
+                <i id="duration-icon" data-lucide="clock" class="absolute left-3.5 top-3.5 text-slate-400 w-5 h-5"></i>
+                <select id="duration-input" onchange="calculateLiveFare()" class="w-full bg-slate-900 border border-slate-800 focus:border-brand-400 text-white pl-11 pr-4 py-3 rounded-xl outline-none transition-colors appearance-none">
+                  <option value="1">1 Day</option>
+                  <option value="2">2 Days</option>
+                  <option value="3" selected>3 Days</option>
+                  <option value="4">4 Days</option>
+                  <option value="5">5 Days</option>
+                  <option value="6">6 Days</option>
+                  <option value="7">7 Days</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
+                  <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manual KM Adjustment (Highly useful if Google Maps API isn't active or fails) -->
+          <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
+            <div class="flex justify-between items-center">
+              <label class="block text-xs font-mono uppercase tracking-wider text-slate-400">Estimated Trip Distance (KM)</label>
+              <span id="km-display" class="font-mono font-bold text-brand-400 text-sm">360 KM</span>
+            </div>
+            <input type="range" id="km-range" min="10" max="1500" value="360" oninput="adjustDistance(this.value)" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-400" />
+            <div class="flex justify-between text-[10px] text-slate-400">
+              <span>10 KM</span>
+              <span>Slide to adjust exact estimated round-trip distance</span>
+              <span>1500 KM</span>
+            </div>
+          </div>
+
+          <!-- Fleet Class Selector -->
+          <div>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Select Fleet Class</label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- Sedan Option -->
+              <div onclick="selectVehicle('Sedan')" id="vehicle-card-Sedan" class="vehicle-option-card p-4 rounded-xl border border-slate-800 bg-slate-900 cursor-pointer transition-all hover:border-slate-700">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-bold text-sm text-white">Premium Sedan</span>
+                  <span class="text-[10px] bg-slate-850 px-2 py-0.5 rounded text-slate-400 font-mono">₹15/KM</span>
+                </div>
+                <div class="text-[11px] text-slate-400 mb-3">Dzire, Etios, Aura (4 Seater)</div>
+                <div id="price-Sedan" class="font-display font-black text-lg text-white">Calculating...</div>
+              </div>
+
+              <!-- SUV Prime Option -->
+              <div onclick="selectVehicle('SUV_Prime')" id="vehicle-card-SUV_Prime" class="vehicle-option-card p-4 rounded-xl border border-slate-800 bg-slate-900 cursor-pointer transition-all hover:border-slate-700">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-bold text-sm text-white">SUV Prime</span>
+                  <span class="text-[10px] bg-slate-850 px-2 py-0.5 rounded text-slate-400 font-mono">₹18/KM</span>
+                </div>
+                <div class="text-[11px] text-slate-400 mb-3">Ertiga, Marazzo (6 Seater)</div>
+                <div id="price-SUV_Prime" class="font-display font-black text-lg text-white">Calculating...</div>
+              </div>
+
+              <!-- Premium SUV Option -->
+              <div onclick="selectVehicle('Premium_SUV')" id="vehicle-card-Premium_SUV" class="vehicle-option-card p-4 rounded-xl border-brand-400 bg-brand-400/5 cursor-pointer transition-all">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="font-bold text-sm text-white text-brand-400">Premium SUV</span>
+                  <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-400 font-mono">₹22/KM</span>
+                </div>
+                <div class="text-[11px] text-slate-400 mb-3">Innova Crysta, Hycross</div>
+                <div id="price-Premium_SUV" class="font-display font-black text-lg text-brand-400">Calculating...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact / Customer Details -->
+          <div class="border-t border-slate-800/80 pt-4 space-y-4">
+            <h4 class="text-xs font-mono uppercase tracking-wider text-brand-400">Booking Details</h4>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-slate-400 mb-1">Your Full Name</label>
+                <input type="text" id="customer-name" placeholder="Enter your name" class="w-full bg-slate-900 border border-slate-800 text-white px-4 py-2.5 rounded-xl outline-none focus:border-brand-400 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-400 mb-1">Mobile Contact Number</label>
+                <input type="tel" id="customer-phone" placeholder="Enter mobile number" class="w-full bg-slate-900 border border-slate-800 text-white px-4 py-2.5 rounded-xl outline-none focus:border-brand-400 text-sm" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs text-slate-400 mb-1">Special Notes / Luggage / Instructions (Optional)</label>
+              <textarea id="customer-notes" rows="2" placeholder="e.g. Carrier needed for extra luggage, child seat, specific vehicle color..." class="w-full bg-slate-900 border border-slate-800 text-white p-3 rounded-xl outline-none focus:border-brand-400 text-sm resize-none"></textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Booking Right: Instant Bill Breakdown -->
+        <div class="lg:col-span-5 bg-dark-950 border border-slate-800/85 rounded-2xl p-6 sm:p-8 space-y-6 lg:sticky lg:top-24">
+          <h3 class="font-display font-bold text-lg text-white border-b border-slate-800 pb-4 flex items-center gap-2">
+            <i data-lucide="receipt" class="text-brand-400 w-5 h-5"></i>
+            Trip Price Invoice
+          </h3>
+
+          <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-4">
+            <div class="text-center border-b border-slate-800 pb-3 mb-3">
+              <span class="text-[10px] font-mono text-slate-400 uppercase tracking-widest">Get Taxi Kovai Estimate</span>
+              <h4 id="invoice-trip-package" class="font-display font-bold text-white text-base mt-1">3 Days Premium SUV Tour</h4>
+            </div>
+
+            <!-- Bill Breakdown List -->
+            <div class="space-y-2.5 text-xs">
+              <div class="flex justify-between items-center text-slate-400">
+                <span>Selected Vehicle:</span>
+                <span id="invoice-vehicle-class" class="font-semibold text-white">Premium SUV</span>
+              </div>
+              <div class="flex justify-between items-center text-slate-400">
+                <span>Billable Distance:</span>
+                <span id="invoice-billable-km" class="font-mono text-white font-semibold">360 KM</span>
+              </div>
+              <div class="flex justify-between items-center text-slate-400">
+                <span>Driver Beta (Allowance):</span>
+                <span id="invoice-driver-beta" class="font-mono text-white font-semibold">₹1,800</span>
+              </div>
+              <div class="flex justify-between items-center text-slate-400">
+                <span>State Permit / Tax / Fuel:</span>
+                <span class="text-white font-semibold">Included</span>
+              </div>
+              <div class="border-t border-slate-800 pt-3 flex justify-between items-end">
+                <div>
+                  <span class="text-xs text-slate-400 block font-medium">Estimated Total Fare</span>
+                  <span class="text-[10px] text-slate-400 italic font-mono">(All-inclusive)</span>
+                </div>
+                <div class="text-right">
+                  <span id="invoice-grand-total" class="font-display font-black text-3xl text-brand-400">₹9,720</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Inclusions note -->
+            <div class="bg-slate-950/70 p-3.5 rounded-xl border border-slate-800/60 text-[11px] text-slate-300 leading-relaxed space-y-1.5">
+              <div class="font-bold text-brand-400 flex items-center gap-1">
+                <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                Fare Policy & Inclusions:
+              </div>
+              <p id="invoice-inclusions">
+                Includes luxury round-trip travel, state permits, and driver allowance. Toll gate fees and parking are to be paid by the customer.
+              </p>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="space-y-3">
+            <button onclick="submitInquiryWhatsApp()" class="w-full bg-[#25d366] hover:bg-[#1ebd58] text-white font-bold py-4 rounded-xl shadow-lg shadow-[#25d366]/10 flex items-center justify-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5">
+              <i data-lucide="message-square" class="w-5 h-5 fill-current"></i>
+              <span>Book Instantly on WhatsApp</span>
+            </button>
+            
+            <button onclick="saveBookingToHistory()" class="w-full bg-slate-900 border border-slate-700 hover:border-brand-400 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all duration-300">
+              <i data-lucide="save" class="w-4 h-4"></i>
+              <span>Save Trip Inquiry Locally</span>
+            </button>
+          </div>
+
+          <!-- Toll and Parking Caveat -->
+          <p class="text-[10px] text-slate-400 text-center leading-normal">
+            *Toll gates, airport entry, and hill-climbing parking fee charges are custom-billed extra based on active toll logs.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Saved Bookings Section -->
+      <div id="booking-history-section" class="mt-16 hidden">
+        <h4 class="font-display font-bold text-lg text-white mb-6 flex items-center gap-2">
+          <i data-lucide="history" class="text-brand-400 w-5 h-5"></i>
+          Your Saved Trip Inquiries
+        </h4>
+        <div id="history-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Destinations Section -->
+  <section id="destinations" class="py-24 bg-dark-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+        <div class="space-y-4">
+          <h2 class="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
+            Premium Tour Packages from Coimbatore
+          </h2>
+          <p class="text-slate-300 max-w-2xl">
+            Choose your escape. Enjoy scenic drives to the finest hill towns, palaces, and spiritual centers in South India.
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <span class="text-xs text-slate-400 font-mono">10 Featured Locations</span>
+        </div>
+      </div>
+
+      <!-- Destinations Grid -->
+      <div id="destinations-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Javascript will inject 10 destination cards -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Fleet Details Section -->
+  <section id="fleet" class="py-24 bg-slate-900 border-y border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <h2 class="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
+          Our Handpicked Clean Fleet
+        </h2>
+        <p class="text-slate-300">
+          Our vehicles are meticulously serviced, equipped with high-performance dual AC, dynamic cabin audio, and maximum trunk capacity.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Premium Sedan -->
+        <div class="bg-dark-950 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative h-48 bg-slate-900 flex items-center justify-center p-4">
+              <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80" alt="Premium Sedan" class="max-h-full object-contain rounded-lg" />
+              <div class="absolute top-4 right-4 bg-dark-950 border border-slate-800 text-white font-mono text-xs font-bold px-3 py-1 rounded-full">
+                4 Seats
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <h3 class="font-display font-bold text-xl text-white">Premium Sedan Class</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Latest models of Swift Dzire, Toyota Etios, and Hyundai Aura. Highly cost-effective comfort for small groups and regular business commutes.
+              </p>
+              <ul class="space-y-2 text-xs text-slate-400">
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check" class="text-brand-400 w-4 h-4"></i> Perfect for couples or family of 4
+                </li>
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check" class="text-brand-400 w-4 h-4"></i> Spoil-free clean luxury interiors
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="p-6 border-t border-slate-800 bg-slate-900/50 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-slate-400 block font-mono">Outstation Tour Rate</span>
+              <span class="font-display font-black text-xl text-brand-400">₹15 / KM</span>
+            </div>
+            <a href="#booking" onclick="setBookingVehicle('Sedan')" class="bg-slate-900 hover:bg-brand-400 hover:text-dark-950 text-white px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 hover:border-brand-400 transition-all">Book Sedan</a>
+          </div>
+        </div>
+
+        <!-- SUV Prime -->
+        <div class="bg-dark-950 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="relative h-48 bg-slate-900 flex items-center justify-center p-4">
+              <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80" alt="SUV Prime" class="max-h-full object-contain rounded-lg" />
+              <div class="absolute top-4 right-4 bg-dark-950 border border-slate-800 text-white font-mono text-xs font-bold px-3 py-1 rounded-full">
+                7 Seats
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <h3 class="font-display font-bold text-xl text-white">SUV Prime Class</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Spacious Maruti Suzuki Ertiga or standard Innova models. Exceptional suspension, substantial storage, and highly reliable family cruiser.
+              </p>
+              <ul class="space-y-2 text-xs text-slate-400">
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check" class="text-brand-400 w-4 h-4"></i> Comfortably seats 6-7 passengers
+                </li>
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check" class="text-brand-400 w-4 h-4"></i> Dual split AC for mountain elevations
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="p-6 border-t border-slate-800 bg-slate-900/50 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-slate-400 block font-mono">Outstation Tour Rate</span>
+              <span class="font-display font-black text-xl text-brand-400">₹18 / KM</span>
+            </div>
+            <a href="#booking" onclick="setBookingVehicle('SUV_Prime')" class="bg-slate-900 hover:bg-brand-400 hover:text-dark-950 text-white px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 hover:border-brand-400 transition-all">Book SUV</a>
+          </div>
+        </div>
+
+        <!-- SUV Premium (Innova Crysta / Hycross) -->
+        <div class="bg-dark-950 border-2 border-brand-400 rounded-2xl overflow-hidden shadow-2xl shadow-brand-400/5 flex flex-col justify-between relative">
+          <div class="absolute top-4 left-4 bg-brand-400 text-dark-950 font-display font-bold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full z-10">
+            Most Popular Choice
+          </div>
+          <div>
+            <div class="relative h-48 bg-slate-900 flex items-center justify-center p-4">
+              <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=800&q=80" alt="Innova Crysta Premium" class="max-h-full object-contain rounded-lg" />
+              <div class="absolute top-4 right-4 bg-dark-950 border border-slate-800 text-white font-mono text-xs font-bold px-3 py-1 rounded-full">
+                7 Seats
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <h3 class="font-display font-bold text-xl text-white flex items-center gap-2">
+                Premium SUV Class
+              </h3>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Top-tier Toyota Innova Crysta and Innova Hycross. Superior passenger deck, unparalleled shock absorption, dual climate zone, and luxurious bucket seating.
+              </p>
+              <ul class="space-y-2 text-xs text-slate-400">
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check" class="text-brand-400 w-4 h-4"></i> Premium bucket captain leather seats
+                </li>
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check" class="text-brand-400 w-4 h-4"></i> Luxurious sound insulation & ride stability
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="p-6 border-t border-slate-850 bg-slate-900 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-slate-400 block font-mono">Outstation Tour Rate</span>
+              <span class="font-display font-black text-xl text-brand-400">₹22 / KM</span>
+            </div>
+            <a href="#booking" onclick="setBookingVehicle('Premium_SUV')" class="bg-brand-400 hover:bg-brand-500 text-dark-950 px-4 py-2 rounded-xl text-xs font-bold transition-all">Book Premium</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Custom Info / Why Choose Us Section -->
+  <section id="about" class="py-24 bg-dark-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Why Left visual features -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs font-mono uppercase tracking-widest text-brand-400">Uncompromising Service Standards</span>
+          <h2 class="font-display font-black text-3xl sm:text-4xl text-white tracking-tight">
+            Our Commitment to Your Comfort
+          </h2>
+          <p class="text-slate-300 leading-relaxed text-sm">
+            We are not just a cab booking service. We run a tightly controlled, premium division of cabs with custom interior modifications, safe drivers, and complete pricing transparency.
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="bg-brand-400/10 text-brand-400 p-2.5 rounded-xl h-fit border border-brand-400/15">
+                <i data-lucide="shield-alert" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Zero Surprise Toll Demands</h4>
+                <p class="text-slate-400 text-xs mt-1">Our live pricing invoice lets you know exactly what is included. Your chauffeur will never demand unexpected extra allowances.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="bg-brand-400/10 text-brand-400 p-2.5 rounded-xl h-fit border border-brand-400/15">
+                <i data-lucide="compass" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Hill-Station Certified Drivers</h4>
+                <p class="text-slate-400 text-xs mt-1">Our drivers have a minimum of 8 years of active Western Ghats mountain driving experience, specializing in safely climbing 40+ hairpin loops.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="bg-brand-400/10 text-brand-400 p-2.5 rounded-xl h-fit border border-brand-400/15">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Impeccably Sanitized Vehicles</h4>
+                <p class="text-slate-400 text-xs mt-1">Every taxi undergoes rigorous multi-point visual cleaning, dashboard polish, and upholstery sanitization before picking you up.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why Right Contact Card -->
+        <div class="lg:col-span-6 bg-slate-900 border border-slate-800 p-8 rounded-3xl space-y-6">
+          <h3 class="font-display font-black text-2xl text-white">Need an Instant Custom Tour Quote?</h3>
+          <p class="text-slate-300 text-sm">
+            Speak directly to our operations office. We will configure multi-day hotel plans, customized family stopovers, and special requests.
+          </p>
+          
+          <div class="bg-dark-950 p-5 rounded-2xl border border-slate-800 space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-400">Direct Helpline:</span>
+              <a href="tel:+919043743777" class="font-display font-bold text-lg text-white hover:text-brand-400 transition-colors flex items-center gap-1.5">
+                <i data-lucide="phone-call" class="w-4 h-4 text-brand-400"></i>
+                +91 90437 43777
+              </a>
+            </div>
+            
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-400">Operations Manager:</span>
+              <span class="font-bold text-slate-200">Basheer Ahmed</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-400">Service Hours:</span>
+              <span class="font-bold text-brand-400 font-mono text-xs">24/7 Service Desk</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/919043743777?text=Hello%20Get%20Taxi%20Kovai%2C%20I%20want%20to%20inquire%20about%20a%20custom%20tour%20package%20from%20Coimbatore." target="_blank" class="w-full bg-[#25d366] hover:bg-[#1ebd58] text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors">
+            <i data-lucide="message-square" class="w-4 h-4 fill-current"></i>
+            <span>Chat directly with Manager</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-24 bg-slate-900 border-t border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16 space-y-4">
+        <h2 class="font-display font-black text-3xl text-white tracking-tight">Frequently Asked Questions</h2>
+        <p class="text-slate-300">Got questions? We have compiled precise answers on state permit taxes, toll logs, and night halt charges.</p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <div class="bg-dark-950 border border-slate-800 rounded-2xl overflow-hidden">
+          <button onclick="toggleFaq(1)" class="w-full px-6 py-5 text-left font-bold text-white flex justify-between items-center focus:outline-none">
+            <span>What charges are included in my live estimated fare?</span>
+            <i id="faq-chevron-1" data-lucide="chevron-down" class="w-5 h-5 text-brand-400 transition-transform duration-300"></i>
+          </button>
+          <div id="faq-answer-1" class="hidden px-6 pb-5 text-sm text-slate-300 border-t border-slate-850/40 pt-3">
+            Your estimate includes the fuel charges, professional driver allowance (driver beta), and state border permit taxes if climbing across state borders (e.g., to Munnar or Wayanad). High road toll-gate fees, airport entry logs, and hill parking logs are extra as actual bill receipts are generated.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="bg-dark-950 border border-slate-800 rounded-2xl overflow-hidden">
+          <button onclick="toggleFaq(2)" class="w-full px-6 py-5 text-left font-bold text-white flex justify-between items-center focus:outline-none">
+            <span>How are driver overnight halt charges calculated?</span>
+            <i id="faq-chevron-2" data-lucide="chevron-down" class="w-5 h-5 text-brand-400 transition-transform duration-300"></i>
+          </button>
+          <div id="faq-answer-2" class="hidden px-6 pb-5 text-sm text-slate-300 border-t border-slate-850/40 pt-3">
+            For multi-day packages, the driver allowance (driver beta) is already added into your final invoice estimate. It covers the driver’s basic food and lodging requirements. You do not need to provide hotel rooms or meals for our chauffeurs.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="bg-dark-950 border border-slate-800 rounded-2xl overflow-hidden">
+          <button onclick="toggleFaq(3)" class="w-full px-6 py-5 text-left font-bold text-white flex justify-between items-center focus:outline-none">
+            <span>Is there a limit on the distance traveled on multi-day outstation tours?</span>
+            <i id="faq-chevron-3" data-lucide="chevron-down" class="w-5 h-5 text-brand-400 transition-transform duration-300"></i>
+          </button>
+          <div id="faq-answer-3" class="hidden px-6 pb-5 text-sm text-slate-300 border-t border-slate-850/40 pt-3">
+            Outstation multi-day tours are subject to a minimum average distance of 250 KM per day. If you drive less, you will be billed for 250 KM per day. If your total travel distance exceeds the total included KM (minimum 250 KM x number of days), overage is billed at standard rates (₹15/KM for Sedan, ₹18/KM for SUV Prime, ₹22/KM for Premium SUV).
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark-950 border-t border-slate-800 py-16 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      
+      <div class="space-y-4">
+        <div class="flex items-center gap-2">
+          <div class="bg-brand-400 text-dark-950 px-2 py-1.5 rounded-lg font-display font-black text-sm shadow">GTK</div>
+          <span class="font-display font-bold text-sm text-white">Get Taxi Kovai</span>
+        </div>
+        <p class="leading-relaxed">
+          Premium cab services specializing in hill drops, corporate drops, and customized multi-day outstation packages from Coimbatore.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white text-sm mb-4">Taxi Packages</h4>
+        <ul class="space-y-2">
+          <li>Ooty Tour Taxi from Coimbatore</li>
+          <li>Munnar Hill Ride Package</li>
+          <li>Kodaikanal Weekend Ride</li>
+          <li>Isha Yoga / Adiyogi Dropper</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white text-sm mb-4">Contact Info</h4>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-1.5 text-slate-300">
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-400"></i>
+            +91 90437 43777
+          </li>
+          <li class="flex items-center gap-1.5">
+            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+            bookings@gettaxikovai.com
+          </li>
+          <li class="flex items-center gap-1.5">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+            Coimbatore International Airport Terminal
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white text-sm mb-4 font-mono uppercase tracking-wider text-brand-400">Secure Dispatch</h4>
+        <p class="leading-relaxed mb-4">
+          All rides are radio-tracked with high-speed cellular links. Safe, pristine, air-conditioned transport guaranteed.
+        </p>
+        <span class="text-[10px] text-slate-500 font-mono">© 2026 Get Taxi Kovai. All rights reserved.</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating Assistant / AI Chat Widget -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button onclick="toggleChat()" id="chat-toggle-btn" class="bg-brand-400 text-dark-950 p-4 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center">
+      <i data-lucide="message-square" class="w-6 h-6"></i>
+    </button>
+    
+    <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[90vw] sm:w-[380px] h-[480px] bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+      <!-- Chat Header -->
+      <div class="bg-dark-950 border-b border-slate-800 p-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <div class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
+          <div>
+            <h4 class="font-bold text-xs text-white">GTK Chauffeur Assistant</h4>
+            <span class="text-[10px] text-slate-400 font-mono">Online & Ready</span>
+          </div>
+        </div>
+        <button onclick="toggleChat()" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Chat Messages -->
+      <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs leading-normal">
+        <div class="bg-slate-950/70 text-slate-300 p-3 rounded-xl border border-slate-850 max-w-[85%]">
+          Vanakkam! I am your Get Taxi Kovai tour guide. Ask me anything about Ooty drops, Munnar tours, or premium vehicle class rates from Coimbatore!
+        </div>
+      </div>
+
+      <!-- Quick replies -->
+      <div class="p-2 border-t border-slate-850 bg-slate-950/50 flex flex-wrap gap-1.5">
+        <button onclick="sendQuickReply('Ooty Rate')" class="bg-slate-900 border border-slate-800 hover:border-brand-400 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded-full">Ooty Rate</button>
+        <button onclick="sendQuickReply('Innova Seating')" class="bg-slate-900 border border-slate-800 hover:border-brand-400 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded-full">Innova Seating</button>
+        <button onclick="sendQuickReply('Is permit included?')" class="bg-slate-900 border border-slate-800 hover:border-brand-400 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded-full">Permits?</button>
+      </div>
+
+      <!-- Chat Input -->
+      <form onsubmit="submitChat(event)" class="p-3 border-t border-slate-800 bg-slate-900 flex gap-2">
+        <input type="text" id="chat-input" placeholder="Type a message..." class="flex-1 bg-dark-950 border border-slate-850 text-white rounded-xl px-4 py-2.5 outline-none focus:border-brand-400 text-xs" />
+        <button type="submit" class="bg-brand-400 text-dark-950 p-2.5 rounded-xl hover:bg-brand-500 transition-colors">
+          <i data-lucide="send" class="w-4 h-4"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Logics -->
+  <script>
+    // Destinations database
+    const DESTINATIONS = [
+      { id: 'ooty', title: 'Ooty (Udhagamandalam)', slogan: 'Queen of Hill Stations', distanceKm: 180, daysNeeded: 3, time: '3.5 Hrs', desc: 'Famous for spectacular tea estates, vintage toy trains, Botanical Gardens, and towering mountains.', image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80', highlights: ['Tea gardens', 'Toy train', 'Ooty Lake', 'Doddabetta'] },
+      { id: 'munnar', title: 'Munnar', slogan: 'Kashmir of South India', distanceKm: 320, daysNeeded: 3, time: '4.5 Hrs', desc: 'A majestic hill town in Kerala rich with tea carpets, misty valleys, and wildlife sanctuaries.', image: 'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80', highlights: ['Eravikulam Park', 'Mattupetty Dam', 'Tea Museum', 'Echo Point'] },
+      { id: 'kodaikanal', title: 'Kodaikanal', slogan: 'Princess of Hill Stations', distanceKm: 340, daysNeeded: 3, time: '4.5 Hrs', desc: 'Loved for its star-shaped central lake, towering mystical pine groves, and cliffs.', image: 'https://images.unsplash.com/photo-1608976450655-b040bf595be0?auto=format&fit=crop&w=800&q=80', highlights: ['Kodaikanal Lake', 'Coakers Walk', 'Pillar Rocks', 'Pine Forest'] },
+      { id: 'coorg', title: 'Coorg (Kodagu)', slogan: 'Scotland of India', distanceKm: 620, daysNeeded: 4, time: '7 Hrs', desc: 'Misty mountain forests, sprawling coffee gardens, Golden Temples, and elephant sanctuaries.', image: 'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=800&q=80', highlights: ['Abbey Waterfalls', 'Dubare Camp', 'Golden Temple', 'Rajas Seat'] },
+      { id: 'wayanad', title: 'Wayanad', slogan: 'Sub-tropical Wilderness', distanceKm: 480, daysNeeded: 4, time: '6 Hrs', desc: 'Lush Kerala forest upland plateau featuring pre-historic caves and waterfalls.', image: 'https://images.unsplash.com/photo-1582201942988-13e60e4556ee?auto=format&fit=crop&w=800&q=80', highlights: ['Edakkal Caves', 'Banasura Dam', 'Pookode Lake', 'Lakkidi Pass'] },
+      { id: 'valparai', title: 'Valparai', slogan: '40 Hairpin Ghat Ride', distanceKm: 220, daysNeeded: 2, time: '3.5 Hrs', desc: 'Offbeat Western Ghats paradise surrounded by dense tea gardens and active wildlife.', image: 'https://images.unsplash.com/photo-1616843413587-9e3a37f7bbd8?auto=format&fit=crop&w=800&q=80', highlights: ['40 Hairpin Curves', 'Sholayar Dam', 'Aliyar Reservoir', 'Nallamudi View'] },
+      { id: 'coonoor', title: 'Coonoor', slogan: 'Nilgiri Heritage Tea Hills', distanceKm: 140, daysNeeded: 2, time: '2.5 Hrs', desc: 'Second largest hill station in Nilgiris, highly peaceful climate, and panoramic view overlooks.', image: 'https://images.unsplash.com/photo-1598042457106-96b349ca3dfc?auto=format&fit=crop&w=800&q=80', highlights: ['Sims Botanical Park', 'Dolphins Nose', 'Lambs Rock', 'Tea factory tours'] },
+      { id: 'mysore', title: 'Mysore', slogan: 'City of glittering Palaces', distanceKm: 400, daysNeeded: 2, time: '4.5 Hrs', desc: 'Dazzling royal palaces, grand manicured garden fountains, and heritage markets.', image: 'https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=800&q=80', highlights: ['Glittering Palace', 'Brindavan Fountains', 'Chamundi Hill', 'Heritage Walks'] },
+      { id: 'adiyogi', title: 'Isha Yoga & Adiyogi', slogan: 'Sacred Spiritual Epicenter', distanceKm: 60, daysNeeded: 1, time: '1.2 Hrs', desc: 'Home to the magnificent 112-foot tall Adiyogi statue and consecrated Dhyanalinga temple.', image: 'https://images.unsplash.com/photo-1635322966219-b75ed372eb01?auto=format&fit=crop&w=800&q=80', highlights: ['112-foot Adiyogi Shiva', 'Dhyanalinga Dome', 'Laser Light Show', 'Theerthakund dips'] },
+      { id: 'madurai', title: 'Madurai Temple City', slogan: 'Dravidian Heritage Masterpiece', distanceKm: 420, daysNeeded: 2, time: '4.5 Hrs', desc: 'One of the oldest continuously lived cities, centered around the colossal Meenakshi Amman Temple.', image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80', highlights: ['Meenakshi Amman Gopuram', 'Thirumalai Palace', 'Gandhi Museum', 'Authentic Food tour'] }
+    ];
+
+    // Selected state
+    let activeTripType = 'one_way';
+    let selectedVehicleType = 'Premium_SUV'; // Default selection from UI
+    let currentDistance = 360;
+
+    // Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      // Hide Splash screen after 1.8s
+      setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) {
+          splash.classList.add('fade-out');
+          setTimeout(() => splash.remove(), 800);
+        }
+      }, 1800);
+
+      // Set default datetime (tomorrow 7:00 AM)
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setHours(7, 0, 0, 0);
+      
+      const isoString = tomorrow.toISOString().slice(0, 16);
+      document.getElementById('pickup-date').value = isoString;
+
+      // Load destinations dynamically
+      renderDestinations();
+      
+      // Calculate original fares
+      calculateLiveFare();
+      
+      // Render booking history
+      renderBookingHistory();
+    });
+
+    // Render destinations grid
+    function renderDestinations() {
+      const grid = document.getElementById('destinations-grid');
+      grid.innerHTML = '';
+      
+      DESTINATIONS.forEach(dest => {
+        const card = document.createElement('div');
+        card.className = 'bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-brand-400 transition-all duration-500 group';
+        
+        // Highlights markup
+        const hList = dest.highlights.map(h => `<span class="bg-slate-950/80 px-2 py-1 rounded text-[10px] text-slate-300 font-medium">${h}</span>`).join('');
+        
+        card.innerHTML = `
+          <div class="relative h-48 overflow-hidden">
+            <img src="${dest.image}" alt="${dest.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+              <div>
+                <span class="text-[10px] font-mono text-brand-400 uppercase tracking-widest">${dest.slogan}</span>
+                <h3 class="font-display font-bold text-lg text-white">${dest.title}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 space-y-4">
+            <p class="text-xs text-slate-300 leading-relaxed">${dest.desc}</p>
+            
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              ${hList}
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 py-3 border-y border-slate-800/80 text-[11px] font-medium text-slate-400">
+              <div class="flex items-center gap-1">
+                <i data-lucide="map" class="w-4 h-4 text-brand-400"></i>
+                <span>${dest.distanceKm} KM Round Trip</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <i data-lucide="clock" class="w-4 h-4 text-brand-400"></i>
+                <span>${dest.time} (Each Way)</span>
+              </div>
+            </div>
+
+            <button onclick="bookDestination('${dest.title}', ${dest.distanceKm}, ${dest.daysNeeded})" class="w-full bg-slate-950 hover:bg-brand-400 hover:text-dark-950 text-white font-bold py-3 px-4 rounded-xl text-xs tracking-wide transition-all border border-slate-800 hover:border-brand-400">
+              Calculate Ride Estimate to ${dest.id.charAt(0).toUpperCase() + dest.id.slice(1)}
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      
+      // Update newly injected lucide icons
+      lucide.createIcons();
+    }
+
+    // Toggle tab btn styling
+    function setTripType(type) {
+      activeTripType = type;
+      
+      // Update tabs visually
+      document.querySelectorAll('.trip-tab-btn').forEach(btn => {
+        btn.className = 'trip-tab-btn py-2 text-xs font-semibold rounded-lg text-slate-300 transition-all hover:text-white';
+      });
+      document.getElementById(`btn-${type}`).className = 'trip-tab-btn py-2 text-xs font-semibold rounded-lg transition-all bg-brand-400 text-dark-950 shadow-md shadow-brand-400/10';
+      
+      // Update form container visuals based on selected mode
+      const dropContainer = document.getElementById('drop-container');
+      const durationContainer = document.getElementById('duration-container');
+      const durationLabel = document.getElementById('duration-label');
+      const durationSelect = document.getElementById('duration-input');
+      
+      if (type === 'local') {
+        dropContainer.style.opacity = '0.4';
+        document.getElementById('drop-input').value = 'Coimbatore Local';
+        document.getElementById('drop-input').disabled = true;
+        
+        durationContainer.style.opacity = '0.4';
+        durationSelect.disabled = true;
+        durationLabel.innerText = 'Days Needed';
+        adjustDistance(60);
+      } else if (type === 'hourly') {
+        dropContainer.style.opacity = '0.4';
+        document.getElementById('drop-input').value = 'Coimbatore Town';
+        document.getElementById('drop-input').disabled = true;
+        
+        durationContainer.style.opacity = '1.0';
+        durationSelect.disabled = false;
+        durationLabel.innerText = 'Hours Needed';
+        
+        // populate hourly options
+        durationSelect.innerHTML = `
+          <option value="1">1 Hour</option>
+          <option value="2">2 Hours</option>
+          <option value="4">4 Hours</option>
+          <option value="8" selected>8 Hours</option>
+          <option value="12">12 Hours</option>
+        `;
+        adjustDistance(80);
+      } else {
+        dropContainer.style.opacity = '1.0';
+        document.getElementById('drop-input').disabled = false;
+        if (document.getElementById('drop-input').value === 'Coimbatore Local' || document.getElementById('drop-input').value === 'Coimbatore Town') {
+          document.getElementById('drop-input').value = 'Ooty Hill Station';
+        }
+        
+        durationContainer.style.opacity = '1.0';
+        durationSelect.disabled = false;
+        durationLabel.innerText = 'Days Needed';
+        
+        durationSelect.innerHTML = `
+          <option value="1">1 Day</option>
+          <option value="2">2 Days</option>
+          <option value="3" selected>3 Days</option>
+          <option value="4">4 Days</option>
+          <option value="5">5 Days</option>
+          <option value="6">6 Days</option>
+          <option value="7">7 Days</option>
+        `;
+        
+        if (type === 'one_way') {
+          adjustDistance(180);
+        } else {
+          adjustDistance(360);
+        }
+      }
+      
+      calculateLiveFare();
+    }
+
+    // Auto-populate when clicking "Calculate Ride Estimate to..."
+    function bookDestination(title, distance, daysNeeded) {
+      document.getElementById('drop-input').value = title;
+      
+      // Auto-set trip type to Round Trip for custom outstations
+      setTripType('round_trip');
+      
+      // Select appropriate days needed
+      const durSelect = document.getElementById('duration-input');
+      durSelect.value = daysNeeded.toString();
+      
+      // Adjust distance slider & currentDistance
+      adjustDistance(distance);
+      
+      // Scroll to booking form
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Adjust distance slider
+    function adjustDistance(value) {
+      currentDistance = parseInt(value);
+      document.getElementById('km-range').value = value;
+      document.getElementById('km-display').innerText = `${value} KM`;
+      calculateLiveFare();
+    }
+
+    // Select Fleet Class Card
+    function selectVehicle(type) {
+      selectedVehicleType = type;
+      
+      // Update visual active card
+      document.querySelectorAll('.vehicle-option-card').forEach(card => {
+        card.className = 'vehicle-option-card p-4 rounded-xl border border-slate-800 bg-slate-900 cursor-pointer transition-all hover:border-slate-700';
+      });
+      
+      const selectedCard = document.getElementById(`vehicle-card-${type}`);
+      selectedCard.className = 'vehicle-option-card p-4 rounded-xl border-brand-400 bg-brand-400/5 cursor-pointer transition-all';
+      
+      calculateLiveFare();
+    }
+
+    function setBookingVehicle(type) {
+      selectVehicle(type);
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Master pricing calculator logic (Exact match of src/data.ts calculateTaxiFare)
+    function runCoreFareCalculator(vehicleType, tripType, destination, durationVal, distanceKm) {
+      const distance = Math.max(0, distanceKm);
+      const duration = Math.max(1, durationVal);
+      
+      let fare = 0;
+      let inclusions = '';
+      let overageRate = '';
+      let tripPackage = '';
+      let vehicleSelected = '';
+      let billableDistance = distance;
+      let driverBeta = 0;
+
+      if (distanceKm === 0) {
+        return {
+          fare: 0,
+          inclusions: 'All-inclusive, premium travel experience with professional chauffeur service.',
+          overageRate: 'Additional usage billed at standard rates.',
+          tripPackage: 'Please enter details to calculate',
+          vehicleSelected: vehicleType === 'SUV_Prime' ? 'SUV Prime' : vehicleType === 'Premium_SUV' ? 'Premium SUV' : 'Premium Sedan',
+          breakdown: { billableDistance: 0, driverBeta: 0, subtotal: 0, estimatedTotal: 0 }
+        };
+      }
+
+      if (vehicleType === 'SUV_Prime') {
+        vehicleSelected = 'SUV Prime (Ertiga / Innova)';
+        
+        if (tripType === 'hourly') {
+          const hours = Math.max(1, Math.min(12, duration));
+          const includedKm = hours * 10;
+          tripPackage = `${hours} Hours SUV Prime Rental`;
+          const baseFare = hours * 450;
+          const extraKm = Math.max(0, distance - includedKm);
+          fare = baseFare + (extraKm * 35);
+          inclusions = 'Includes hourly local travel with premium SUV and chauffeur service.';
+          overageRate = 'Standard extra usage rates apply after rental limit.';
+        } else if (tripType === 'local') {
+          tripPackage = 'Local Day Trip within Coimbatore';
+          fare = 120 + (distance * 35);
+          inclusions = 'Includes local SUV Prime travel with professional driver service.';
+          overageRate = 'Standard local rates apply for any extra travel.';
+        } else if (tripType === 'one_way') {
+          tripPackage = `One-Way SUV Prime Drop to ${destination || 'Destination'}`;
+          billableDistance = Math.max(130, distance);
+          driverBeta = 550;
+          fare = (billableDistance * 20) + driverBeta;
+          inclusions = 'Includes SUV Prime one-way drop with driver allowance and fuel charges.';
+          overageRate = 'Standard outstation overage rates apply.';
+        } else {
+          const daysStr = duration === 1 ? '1 Day' : `${duration} Days`;
+          tripPackage = `${daysStr} SUV Prime Tour to ${destination || 'Destination'}`;
+          const minDistance = duration * 250;
+          billableDistance = Math.max(minDistance, distance);
+          driverBeta = duration * 550;
+          fare = (billableDistance * 18) + driverBeta;
+          inclusions = 'Includes round-trip travel, state permit taxes, and driver allowance.';
+          overageRate = 'Standard outstation tour rates apply for extra distance.';
+        }
+      } else if (vehicleType === 'Premium_SUV') {
+        vehicleSelected = 'Premium SUV (Innova Crysta / Hycross)';
+        
+        if (tripType === 'hourly') {
+          const hours = Math.max(1, Math.min(12, duration));
+          tripPackage = `${hours} Hours Premium SUV Rental`;
+          fare = 0;
+          inclusions = 'Innova Crysta & Hycross hourly rentals require custom itineraries.';
+          overageRate = 'Direct WhatsApp or Phone Enquiry Required.';
+        } else if (tripType === 'local') {
+          tripPackage = 'Local Day Trip within Coimbatore';
+          fare = 150 + (distance * 40);
+          inclusions = 'Includes local luxury SUV travel with professional chauffeur service.';
+          overageRate = 'Standard local luxury rates apply for extra usage.';
+        } else if (tripType === 'one_way') {
+          tripPackage = `One-Way Premium SUV Drop to ${destination || 'Destination'}`;
+          billableDistance = Math.max(130, distance);
+          driverBeta = 600;
+          fare = (billableDistance * 24) + driverBeta;
+          inclusions = 'Includes premium SUV one-way drop with driver allowance and fuel charges.';
+          overageRate = 'Standard premium overage rates apply.';
+        } else {
+          const daysStr = duration === 1 ? '1 Day' : `${duration} Days`;
+          tripPackage = `${daysStr} Premium SUV Tour to ${destination || 'Destination'}`;
+          const minDistance = duration * 250;
+          billableDistance = Math.max(minDistance, distance);
+          driverBeta = duration * 600;
+          fare = (billableDistance * 22) + driverBeta;
+          inclusions = 'Includes luxury round-trip travel, state permits, and driver allowance.';
+          overageRate = 'Standard premium tour rates apply for extra distance.';
+        }
+      } else {
+        // Default to Sedan (Premium Sedan)
+        vehicleSelected = 'Premium Sedan';
+        
+        if (tripType === 'hourly') {
+          const hours = Math.max(1, Math.min(12, duration));
+          const includedKm = hours * 10;
+          tripPackage = `${hours} Hours Local Rental`;
+          const baseFare = hours * 350;
+          const extraKm = Math.max(0, distance - includedKm);
+          fare = baseFare + (extraKm * 30);
+          inclusions = 'Includes hourly local travel with premium sedan and professional chauffeur.';
+          overageRate = 'Standard extra usage rates apply after rental limit.';
+        } else if (tripType === 'local') {
+          tripPackage = 'Local Day Trip within Coimbatore';
+          fare = 80 + (distance * 30);
+          inclusions = 'Includes local sedan travel and professional driver service.';
+          overageRate = 'Standard local rates apply for extra travel.';
+        } else if (tripType === 'one_way') {
+          tripPackage = `One-Way Drop to ${destination || 'Destination'}`;
+          billableDistance = Math.max(130, distance);
+          driverBeta = 500;
+          fare = (billableDistance * 15) + driverBeta;
+          inclusions = 'Includes premium sedan one-way drop, driver allowance, and fuel charges.';
+          overageRate = 'Standard outstation overage rates apply.';
+        } else {
+          const daysStr = duration === 1 ? '1 Day' : `${duration} Days`;
+          tripPackage = `${daysStr} Tour to ${destination || 'Destination'}`;
+          const minDistance = duration * 250;
+          billableDistance = Math.max(minDistance, distance);
+          driverBeta = duration * 500;
+          fare = (billableDistance * 15) + driverBeta;
+          inclusions = 'Includes comfortable round-trip travel, state permits, and driver allowance.';
+          overageRate = 'Standard outstation tour rates apply for extra distance.';
+        }
+      }
+
+      return {
+        fare: Math.round(fare),
+        inclusions,
+        overageRate,
+        tripPackage,
+        vehicleSelected,
+        isEnquiryOnly: vehicleType === 'Premium_SUV' && tripType === 'hourly',
+        breakdown: {
+          billableDistance,
+          driverBeta,
+          subtotal: fare,
+          estimatedTotal: Math.round(fare)
+        }
+      };
+    }
+
+    // Live Fare Calculation UI binder
+    function calculateLiveFare() {
+      const destination = document.getElementById('drop-input').value;
+      const durationVal = parseInt(document.getElementById('duration-input').value) || 1;
+      
+      // Calculate individual vehicle prices in selector
+      const vehicles = ['Sedan', 'SUV_Prime', 'Premium_SUV'];
+      vehicles.forEach(veh => {
+        const calc = runCoreFareCalculator(veh, activeTripType, destination, durationVal, currentDistance);
+        const priceLabel = document.getElementById(`price-${veh}`);
+        if (calc.isEnquiryOnly) {
+          priceLabel.innerText = 'Enquiry Required';
+          priceLabel.className = 'font-display font-black text-sm text-amber-400 mt-1';
+        } else {
+          priceLabel.innerText = `₹${calc.fare.toLocaleString()}`;
+          priceLabel.className = veh === selectedVehicleType && veh === 'Premium_SUV' ? 'font-display font-black text-lg text-brand-400' : 'font-display font-black text-lg text-white';
+        }
+      });
+
+      // Calculate final active selected vehicle price for invoice
+      const mainCalc = runCoreFareCalculator(selectedVehicleType, activeTripType, destination, durationVal, currentDistance);
+      
+      document.getElementById('invoice-trip-package').innerText = mainCalc.tripPackage;
+      document.getElementById('invoice-vehicle-class').innerText = mainCalc.vehicleSelected;
+      document.getElementById('invoice-billable-km').innerText = `${mainCalc.breakdown.billableDistance} KM`;
+      document.getElementById('invoice-driver-beta').innerText = `₹${mainCalc.breakdown.driverBeta.toLocaleString()}`;
+      document.getElementById('invoice-inclusions').innerText = mainCalc.inclusions;
+      
+      const totalLabel = document.getElementById('invoice-grand-total');
+      if (mainCalc.isEnquiryOnly) {
+        totalLabel.innerText = 'Enquiry Required';
+        totalLabel.className = 'font-display font-black text-lg text-amber-400';
+      } else {
+        totalLabel.innerText = `₹${mainCalc.fare.toLocaleString()}`;
+        totalLabel.className = 'font-display font-black text-3xl text-brand-400';
+      }
+    }
+
+    // Submit Booking Info to WhatsApp (Crucial production feature)
+    function submitInquiryWhatsApp() {
+      const name = document.getElementById('customer-name').value.trim();
+      const phone = document.getElementById('customer-phone').value.trim();
+      const notes = document.getElementById('customer-notes').value.trim();
+      const pickup = document.getElementById('pickup-input').value.trim();
+      const drop = document.getElementById('drop-input').value.trim();
+      const datetime = document.getElementById('pickup-date').value;
+      const durationVal = parseInt(document.getElementById('duration-input').value) || 1;
+      
+      if (!name || !phone) {
+        alert('Please fill out your Name and Contact Number before booking on WhatsApp.');
+        return;
+      }
+
+      const mainCalc = runCoreFareCalculator(selectedVehicleType, activeTripType, drop, durationVal, currentDistance);
+      
+      // Formatting pre-filled WhatsApp message
+      let msg = `*GET TAXI KOVAI TRIP BOOKING*\n`;
+      msg += `-------------------------------------\n`;
+      msg += `*Customer Name:* ${name}\n`;
+      msg += `*Contact Phone:* ${phone}\n`;
+      msg += `*Vehicle Class:* ${mainCalc.vehicleSelected}\n`;
+      msg += `*Trip Type:* ${activeTripType.toUpperCase().replace('_', ' ')}\n`;
+      msg += `*Pickup Address:* ${pickup}\n`;
+      if (activeTripType !== 'local' && activeTripType !== 'hourly') {
+        msg += `*Drop-off Address:* ${drop}\n`;
+      }
+      msg += `*Estimated Distance:* ${currentDistance} KM\n`;
+      msg += `*Date & Time:* ${datetime}\n`;
+      if (activeTripType === 'hourly') {
+        msg += `*Hours Requested:* ${durationVal} Hours\n`;
+      } else if (activeTripType === 'round_trip') {
+        msg += `*Days Requested:* ${durationVal} Days\n`;
+      }
+      
+      msg += `-------------------------------------\n`;
+      if (mainCalc.isEnquiryOnly) {
+        msg += `*Estimated Total Fare:* Enquiry Required / Custom Itinerary\n`;
+      } else {
+        msg += `*Estimated Total Fare:* ₹${mainCalc.fare.toLocaleString()} (All-inclusive)\n`;
+      }
+      if (notes) {
+        msg += `*Special Requests:* ${notes}\n`;
+      }
+      msg += `-------------------------------------\n`;
+      msg += `Please confirm availability and dispatch! Thank you.`;
+
+      // Encode URL
+      const whatsappUrl = `https://wa.me/919043743777?text=${encodeURIComponent(msg)}`;
+      window.open(whatsappUrl, '_blank');
+      
+      // Auto-save locally too
+      saveBookingToHistory();
+    }
+
+    // Save inquiries to localStorage
+    function saveBookingToHistory() {
+      const name = document.getElementById('customer-name').value.trim();
+      const phone = document.getElementById('customer-phone').value.trim();
+      const notes = document.getElementById('customer-notes').value.trim();
+      const pickup = document.getElementById('pickup-input').value.trim();
+      const drop = document.getElementById('drop-input').value.trim();
+      const datetime = document.getElementById('pickup-date').value;
+      const durationVal = parseInt(document.getElementById('duration-input').value) || 1;
+
+      if (!name || !phone) {
+        alert('Please enter your Name and Mobile Number to save inquiry history.');
+        return;
+      }
+
+      const mainCalc = runCoreFareCalculator(selectedVehicleType, activeTripType, drop, durationVal, currentDistance);
+
+      const booking = {
+        id: `KOV-${Math.floor(100000 + Math.random() * 900000)}`,
+        name,
+        phone,
+        notes,
+        pickup,
+        drop,
+        datetime,
+        distance: currentDistance,
+        vehicle: mainCalc.vehicleSelected,
+        tripType: activeTripType,
+        total: mainCalc.isEnquiryOnly ? 'Enquiry Required' : `₹${mainCalc.fare.toLocaleString()}`,
+        dateSaved: new Date().toLocaleDateString(),
+        status: 'Pending Dispatch'
+      };
+
+      const existing = JSON.parse(localStorage.getItem('gtk_saved_bookings') || '[]');
+      existing.unshift(booking); // Newest first
+      localStorage.setItem('gtk_saved_bookings', JSON.stringify(existing));
+
+      renderBookingHistory();
+      
+      // Flash a little toast message
+      alert(`Trip booking ${booking.id} has been saved locally. You can review your submission history in the booking history section below.`);
+    }
+
+    // Render local inquiry history
+    function renderBookingHistory() {
+      const list = document.getElementById('history-list');
+      const container = document.getElementById('booking-history-section');
+      const existing = JSON.parse(localStorage.getItem('gtk_saved_bookings') || '[]');
+      
+      if (existing.length === 0) {
+        container.classList.add('hidden');
+        return;
+      }
+
+      container.classList.remove('hidden');
+      list.innerHTML = '';
+
+      existing.forEach(b => {
+        const card = document.createElement('div');
+        card.className = 'bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-4 text-xs';
+        card.innerHTML = `
+          <div class="flex justify-between items-center border-b border-slate-850 pb-2.5">
+            <div>
+              <span class="font-mono text-brand-400 font-bold block">${b.id}</span>
+              <span class="text-[10px] text-slate-500">${b.dateSaved}</span>
+            </div>
+            <span class="bg-brand-400/10 text-brand-400 px-2.5 py-1 rounded-full font-bold text-[10px] tracking-wide uppercase">${b.status}</span>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex justify-between"><span class="text-slate-400">Class:</span><span class="font-semibold text-white">${b.vehicle}</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Pickup:</span><span class="text-white text-right max-w-[180px] truncate">${b.pickup}</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Destination:</span><span class="text-white text-right max-w-[180px] truncate">${b.drop}</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Scheduled:</span><span class="text-white font-mono">${b.datetime.replace('T', ' ')}</span></div>
+            <div class="flex justify-between border-t border-slate-850/60 pt-2.5 items-end">
+              <span class="text-slate-400">Estimated Total:</span>
+              <span class="font-display font-black text-lg text-brand-400">${b.total}</span>
+            </div>
+          </div>
+          
+          <div class="flex gap-2">
+            <button onclick="deleteBooking('${b.id}')" class="flex-1 bg-slate-950 hover:bg-red-500/10 hover:text-red-400 text-slate-400 p-2 rounded-lg transition-colors border border-slate-800 hover:border-red-500/20">Delete</button>
+            <button onclick="relaunchWhatsApp('${b.id}')" class="flex-1 bg-[#25d366] hover:bg-[#1ebd58] text-white font-bold p-2 rounded-lg text-center transition-colors">Resend WhatsApp</button>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+      
+      lucide.createIcons();
+    }
+
+    function deleteBooking(id) {
+      const existing = JSON.parse(localStorage.getItem('gtk_saved_bookings') || '[]');
+      const filtered = existing.filter(b => b.id !== id);
+      localStorage.setItem('gtk_saved_bookings', JSON.stringify(filtered));
+      renderBookingHistory();
+    }
+
+    function relaunchWhatsApp(id) {
+      const existing = JSON.parse(localStorage.getItem('gtk_saved_bookings') || '[]');
+      const b = existing.find(x => x.id === id);
+      if (!b) return;
+
+      let msg = `*GET TAXI KOVAI TRIP BOOKING REQUEST*\n`;
+      msg += `-------------------------------------\n`;
+      msg += `*Booking ID:* ${b.id}\n`;
+      msg += `*Customer Name:* ${b.name}\n`;
+      msg += `*Contact Phone:* ${b.phone}\n`;
+      msg += `*Vehicle Class:* ${b.vehicle}\n`;
+      msg += `*Trip Type:* ${b.tripType.toUpperCase().replace('_', ' ')}\n`;
+      msg += `*Pickup Address:* ${b.pickup}\n`;
+      msg += `*Destination Address:* ${b.drop}\n`;
+      msg += `*Scheduled Date:* ${b.datetime}\n`;
+      msg += `*Total Estimate:* ${b.total}\n`;
+      if (b.notes) msg += `*Requests:* ${b.notes}\n`;
+      msg += `-------------------------------------\n`;
+      msg += `Re-submitting saved inquiry. Please dispatch!`;
+
+      const whatsappUrl = `https://wa.me/919043743777?text=${encodeURIComponent(msg)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // FAQ Accordion
+    function toggleFaq(id) {
+      const ans = document.getElementById(`faq-answer-${id}`);
+      const chev = document.getElementById(`faq-chevron-${id}`);
+      
+      if (ans.classList.contains('hidden')) {
+        ans.classList.remove('hidden');
+        chev.style.transform = 'rotate(180deg)';
+      } else {
+        ans.classList.add('hidden');
+        chev.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    // AI Chauffeur Assistant Float Widget Logics
+    function toggleChat() {
+      const window = document.getElementById('chat-window');
+      const btn = document.getElementById('chat-toggle-btn');
+      
+      if (window.classList.contains('hidden')) {
+        window.classList.remove('hidden');
+        btn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+      } else {
+        window.classList.add('hidden');
+        btn.innerHTML = '<i data-lucide="message-square" class="w-6 h-6"></i>';
+      }
+      lucide.createIcons();
+    }
+
+    function sendQuickReply(text) {
+      document.getElementById('chat-input').value = text;
+      submitChat(new Event('submit'));
+    }
+
+    function submitChat(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendChatMessage('user', text);
+      input.value = '';
+
+      // Generate local responses based on keywords
+      setTimeout(() => {
+        const reply = generateAiReply(text);
+        appendChatMessage('bot', reply);
+      }, 700);
+    }
+
+    function appendChatMessage(role, text) {
+      const box = document.getElementById('chat-messages');
+      const msg = document.createElement('div');
+      
+      if (role === 'user') {
+        msg.className = 'bg-brand-400 text-dark-950 p-3 rounded-xl ml-auto max-w-[85%] font-medium';
+      } else {
+        msg.className = 'bg-slate-950/70 text-slate-300 p-3 rounded-xl border border-slate-850 max-w-[85%]';
+      }
+      
+      msg.innerText = text;
+      box.appendChild(msg);
+      
+      // Auto scroll
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function generateAiReply(userText) {
+      const text = userText.toLowerCase();
+      
+      if (text.includes('ooty') || text.includes('hill')) {
+        return "Coimbatore to Ooty round-trip is 180 KM. For SUV Prime (Ertiga), the rate is ₹18 per KM + ₹550 driver allowance. It takes roughly 3.5 hours. Would you like to select 'Round Trip' on the calculator above to see the precise invoice?";
+      }
+      if (text.includes('innova') || text.includes('crysta') || text.includes('premium')) {
+        return "Our Premium SUV Class features top-tier Innova Crysta and Innova Hycross. They are rated at ₹22 per KM with luxury captain bucket seats and outstanding AC comfort. It is our most popular car class for premium hill climbs!";
+      }
+      if (text.includes('permit') || text.includes('state') || text.includes('kerala')) {
+        return "Yes, state border permit taxes are included inside our round-trip multi-day estimations. High-speed toll logs are extra on actual slips. There are zero surprise additional driver fees!";
+      }
+      if (text.includes('contact') || text.includes('number') || text.includes('phone') || text.includes('call')) {
+        return "You can call us directly 24/7 at +91 90437 43777. Our operations desk managed by Basheer Ahmed is ready to assist you instantly!";
+      }
+      if (text.includes('sedan') || text.includes('dzire')) {
+        return "Premium Sedan class (Swift Dzire/Etios) is perfect for budget-friendly comfort, starting at only ₹15 per KM with driver beta of ₹500.";
+      }
+      return "Get Taxi Kovai is at your service! Our vehicles start at ₹15/KM (Sedan), ₹18/KM (SUV Prime), and ₹22/KM (Premium SUV). You can enter your pickup and drop address in the Live Calculator above to view the complete bill and book immediately on WhatsApp!";
+    }
+  </script>
+</body>
+</html>

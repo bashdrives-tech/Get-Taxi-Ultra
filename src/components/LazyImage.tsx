@@ -19,32 +19,35 @@ export default function LazyImage({
   containerClassName = '',
   ...props
 }: LazyImageProps) {
-  const isLocalMissing = src ? (!src.startsWith('http') && !src.startsWith('data:')) : true;
-
   const [currentSrc, setCurrentSrc] = useState(src);
-  const [isLoaded, setIsLoaded] = useState(!isLocalMissing);
-  const [hasError, setHasError] = useState(isLocalMissing);
-  const [triedFallback, setTriedFallback] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [fallbackIndex, setFallbackIndex] = useState(0);
 
   useEffect(() => {
-    const missing = src ? (!src.startsWith('http') && !src.startsWith('data:')) : true;
     setCurrentSrc(src);
-    setIsLoaded(!missing);
-    setHasError(missing);
-    setTriedFallback(false);
+    setIsLoaded(false);
+    setHasError(src ? false : true);
+    setFallbackIndex(0);
   }, [src]);
 
   const handleError = () => {
-    if (!triedFallback && src) {
-      const filename = src.replace(/^(\.\/|\/)/, '');
-      const fallbackUrl = FALLBACK_MAP[filename] || FALLBACK_MAP[src];
-      if (fallbackUrl && fallbackUrl !== src) {
-        setTriedFallback(true);
-        setCurrentSrc(fallbackUrl);
-        return;
-      }
+    // Generate fallbacks specifically for fleet-suv-premium.png
+    const fallbacks = src === 'fleet-suv-premium.png' ? [
+      'fleet-suv-premium.PNG',
+      'fleet-premium-suv.png',
+      'fleet-suv-premium.jpg',
+      'fleet-suv-premium.jpeg',
+      'fleet-suv-prime.png' // last-resort working vehicle image
+    ] : [];
+
+    if (fallbackIndex < fallbacks.length) {
+      const nextSrc = fallbacks[fallbackIndex];
+      setFallbackIndex(prev => prev + 1);
+      setCurrentSrc(nextSrc);
+    } else {
+      setHasError(true);
     }
-    setHasError(true);
   };
 
   const isFleet = src?.includes('fleet') || alt?.toLowerCase().includes('suv') || alt?.toLowerCase().includes('sedan') || alt?.toLowerCase().includes('ertiga') || alt?.toLowerCase().includes('innova') || alt?.toLowerCase().includes('crysta') || alt?.toLowerCase().includes('hycross');

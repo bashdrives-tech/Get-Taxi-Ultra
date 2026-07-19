@@ -72,11 +72,12 @@ export default function AIAssistant() {
         })
       });
 
-      if (response.ok) {
+      const contentType = response.headers.get('content-type');
+      if (response.ok && contentType && contentType.includes('application/json')) {
         const data = await response.json();
         setMessages((prev) => [...prev, { role: 'model', text: data.text }]);
       } else {
-        throw new Error();
+        throw new Error('Non-JSON response or offline static host');
       }
     } catch (err) {
       const lowerMsg = userText.toLowerCase();

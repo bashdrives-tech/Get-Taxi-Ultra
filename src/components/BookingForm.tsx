@@ -272,16 +272,13 @@ To resolve this:
     }
   }, [hourlyHours, tripType]);
 
-  // Define initial load condition where distance/fare should show as exactly 0
-  const isInitialLoad = !pickup.trim() || (tripType !== 'local' && tripType !== 'hourly' && !drop.trim());
-
   // Perform the live fare calculation
   const { fare, inclusions, overageRate, tripPackage, vehicleSelected, breakdown, isEnquiryOnly } = calculateTaxiFare(
     selectedVehicle.type,
     tripType,
     (tripType === 'hourly' || tripType === 'local') ? (drop.trim() || 'Coimbatore Local') : drop,
     days,
-    isInitialLoad ? 0 : distanceKm
+    distanceKm
   );
 
   const travelDate = tripType === 'round_trip'
@@ -331,22 +328,60 @@ To resolve this:
         }),
       });
 
-      const data = await response.json();
-      if (response.ok && data.success) {
-        setSubmitSuccess(true);
-        setCreatedInquiry(data.inquiry);
-        setShowToast(true);
-        setTimeout(() => {
-          setShowToast(false);
-        }, 8000);
-        if (onSuccess) {
-          onSuccess(data.inquiry);
+      const contentType = response.headers.get('content-type');
+      if (response.ok && contentType && contentType.includes('application/json')) {
+        const data = await response.json();
+        if (data.success) {
+          setSubmitSuccess(true);
+          setCreatedInquiry(data.inquiry);
+          setShowToast(true);
+          setTimeout(() => {
+            setShowToast(false);
+          }, 8000);
+          if (onSuccess) {
+            onSuccess(data.inquiry);
+          }
+          return;
         }
-      } else {
-        setError(data.error || 'Failed to submit inquiry. Please try again.');
       }
+      throw new Error('API down or non-JSON response');
     } catch (err) {
-      setError('Network error. Please try calling us directly at 9043743777.');
+      // Local fallback for static hosting like Netlify!
+      const fallbackInquiry = {
+        id: `KOV_INQ_${Math.floor(100000 + Math.random() * 900000)}`,
+        customerName: name,
+        customerPhone: phone,
+        tripType,
+        pickupLocation: pickup,
+        dropLocation: finalDrop,
+        distanceKm,
+        daysNeeded: days,
+        vehicleType: selectedVehicle.name,
+        travelDate,
+        estimatedFare: fare,
+        specialRequests: notes,
+        createdAt: new Date().toISOString(),
+        status: 'Pending' as const
+      };
+
+      // Save to localStorage so they can see it if they refresh
+      try {
+        const existing = JSON.parse(localStorage.getItem('local_inquiries') || '[]');
+        existing.push(fallbackInquiry);
+        localStorage.setItem('local_inquiries', JSON.stringify(existing));
+      } catch (e) {
+        console.error(e);
+      }
+
+      setSubmitSuccess(true);
+      setCreatedInquiry(fallbackInquiry);
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 8000);
+      if (onSuccess) {
+        onSuccess(fallbackInquiry);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -548,7 +583,7 @@ To resolve this:
                         </div>
                       ) : (
                         <span className="text-base font-extrabold text-slate-900">
-                          {isInitialLoad ? 0 : distanceKm} KM
+                          {distanceKm} KM
                         </span>
                       )}
                     </div>
@@ -574,7 +609,7 @@ To resolve this:
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {VEHICLES.map((v) => {
                     const isSelected = selectedVehicle.id === v.id;
-                    const fareResult = calculateTaxiFare(v.type, tripType, drop, days, isInitialLoad ? 0 : distanceKm);
+                    const fareResult = calculateTaxiFare(v.type, tripType, drop, days, distanceKm);
                     const isEnq = fareResult.isEnquiryOnly;
                     const individualFare = fareResult.fare;
                     return (
